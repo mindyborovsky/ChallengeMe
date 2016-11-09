@@ -12,9 +12,12 @@
 		503843291DD3E19B009E3DF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503843271DD3E19B009E3DF7 /* Main.storyboard */; };
 		5038432B1DD3E19B009E3DF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5038432A1DD3E19B009E3DF7 /* Assets.xcassets */; };
 		5038432E1DD3E19B009E3DF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5038432C1DD3E19B009E3DF7 /* LaunchScreen.storyboard */; };
+		503843381DD3E64A009E3DF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 503843371DD3E64A009E3DF7 /* GoogleService-Info.plist */; };
+		D8ECBFA63CF51D25ECBE4915 /* Pods_ChallengeMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55AFDA20816199582625CCE /* Pods_ChallengeMe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		39791405F571C8EE47A45BAB /* Pods-ChallengeMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChallengeMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChallengeMe/Pods-ChallengeMe.release.xcconfig"; sourceTree = "<group>"; };
 		503843201DD3E19B009E3DF7 /* ChallengeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChallengeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		503843231DD3E19B009E3DF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		503843251DD3E19B009E3DF7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,9 @@
 		5038432A1DD3E19B009E3DF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5038432D1DD3E19B009E3DF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5038432F1DD3E19B009E3DF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		503843371DD3E64A009E3DF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A58DA11B33AF8B530684C8AD /* Pods-ChallengeMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChallengeMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChallengeMe/Pods-ChallengeMe.debug.xcconfig"; sourceTree = "<group>"; };
+		B55AFDA20816199582625CCE /* Pods_ChallengeMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChallengeMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8ECBFA63CF51D25ECBE4915 /* Pods_ChallengeMe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A67D5EC3DC92D9068327B9F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A58DA11B33AF8B530684C8AD /* Pods-ChallengeMe.debug.xcconfig */,
+				39791405F571C8EE47A45BAB /* Pods-ChallengeMe.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		382FC36AF29856BC4F462D02 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B55AFDA20816199582625CCE /* Pods_ChallengeMe.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		503843171DD3E19A009E3DF7 = {
 			isa = PBXGroup;
 			children = (
 				503843221DD3E19B009E3DF7 /* ChallengeMe */,
 				503843211DD3E19B009E3DF7 /* Products */,
+				1A67D5EC3DC92D9068327B9F /* Pods */,
+				382FC36AF29856BC4F462D02 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +86,7 @@
 				5038432A1DD3E19B009E3DF7 /* Assets.xcassets */,
 				5038432C1DD3E19B009E3DF7 /* LaunchScreen.storyboard */,
 				5038432F1DD3E19B009E3DF7 /* Info.plist */,
+				503843371DD3E64A009E3DF7 /* GoogleService-Info.plist */,
 			);
 			path = ChallengeMe;
 			sourceTree = "<group>";
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 503843321DD3E19B009E3DF7 /* Build configuration list for PBXNativeTarget "ChallengeMe" */;
 			buildPhases = (
+				FABF4A6910070784D01AD28E /* [CP] Check Pods Manifest.lock */,
 				5038431C1DD3E19A009E3DF7 /* Sources */,
 				5038431D1DD3E19A009E3DF7 /* Frameworks */,
 				5038431E1DD3E19A009E3DF7 /* Resources */,
+				9FE4DB3159DDCAEE72932D4B /* [CP] Embed Pods Frameworks */,
+				D015E8453A3D58E4FC3C8FE6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,12 +154,61 @@
 			buildActionMask = 2147483647;
 			files = (
 				5038432E1DD3E19B009E3DF7 /* LaunchScreen.storyboard in Resources */,
+				503843381DD3E64A009E3DF7 /* GoogleService-Info.plist in Resources */,
 				5038432B1DD3E19B009E3DF7 /* Assets.xcassets in Resources */,
 				503843291DD3E19B009E3DF7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9FE4DB3159DDCAEE72932D4B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChallengeMe/Pods-ChallengeMe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D015E8453A3D58E4FC3C8FE6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChallengeMe/Pods-ChallengeMe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FABF4A6910070784D01AD28E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5038431C1DD3E19A009E3DF7 /* Sources */ = {
@@ -258,11 +337,12 @@
 		};
 		503843331DD3E19B009E3DF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A58DA11B33AF8B530684C8AD /* Pods-ChallengeMe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ChallengeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.ChallengeMe;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.wustl.ChallengeMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -270,11 +350,12 @@
 		};
 		503843341DD3E19B009E3DF7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39791405F571C8EE47A45BAB /* Pods-ChallengeMe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ChallengeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.ChallengeMe;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.wustl.ChallengeMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
