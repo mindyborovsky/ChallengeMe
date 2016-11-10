@@ -7,14 +7,24 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FBSDKLoginKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var loginButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let loginButton = FBSDKLoginButton()
+        loginButton.delegate = self
     }
 
+    @IBAction func didPressLoginButton(_ sender: UIButton) {
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -13,6 +13,7 @@
 		5038432B1DD3E19B009E3DF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5038432A1DD3E19B009E3DF7 /* Assets.xcassets */; };
 		5038432E1DD3E19B009E3DF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5038432C1DD3E19B009E3DF7 /* LaunchScreen.storyboard */; };
 		503843381DD3E64A009E3DF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 503843371DD3E64A009E3DF7 /* GoogleService-Info.plist */; };
+		50393E4D1DD3F5F300634411 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50393E4C1DD3F5F300634411 /* FBSDKLoginKit.framework */; };
 		D8ECBFA63CF51D25ECBE4915 /* Pods_ChallengeMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55AFDA20816199582625CCE /* Pods_ChallengeMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		5038432D1DD3E19B009E3DF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5038432F1DD3E19B009E3DF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503843371DD3E64A009E3DF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		50393E4C1DD3F5F300634411 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		A58DA11B33AF8B530684C8AD /* Pods-ChallengeMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChallengeMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChallengeMe/Pods-ChallengeMe.debug.xcconfig"; sourceTree = "<group>"; };
 		B55AFDA20816199582625CCE /* Pods_ChallengeMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChallengeMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50393E4D1DD3F5F300634411 /* FBSDKLoginKit.framework in Frameworks */,
 				D8ECBFA63CF51D25ECBE4915 /* Pods_ChallengeMe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,6 +57,7 @@
 		382FC36AF29856BC4F462D02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				50393E4C1DD3F5F300634411 /* FBSDKLoginKit.framework */,
 				B55AFDA20816199582625CCE /* Pods_ChallengeMe.framework */,
 			);
 			name = Frameworks;
@@ -340,6 +344,10 @@
 			baseConfigurationReference = A58DA11B33AF8B530684C8AD /* Pods-ChallengeMe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ChallengeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.wustl.ChallengeMe;
@@ -353,6 +361,10 @@
 			baseConfigurationReference = 39791405F571C8EE47A45BAB /* Pods-ChallengeMe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ChallengeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.wustl.ChallengeMe;
@@ -380,6 +392,7 @@
 				503843341DD3E19B009E3DF7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

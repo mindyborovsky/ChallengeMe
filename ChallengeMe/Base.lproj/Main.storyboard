@@ -139,7 +139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ID-JU-x3I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2860" y="576"/>
+            <point key="canvasLocation" x="2860" y="581"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="dx5-eK-9tf">
@@ -268,7 +268,7 @@
         <!--View Controller-->
         <scene sceneID="cnP-tw-Gdz">
             <objects>
-                <viewController id="7ra-bf-8zM" sceneMemberID="viewController">
+                <viewController id="7ra-bf-8zM" customClass="ViewController" customModule="ChallengeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yuy-rN-LS7"/>
                         <viewControllerLayoutGuide type="bottom" id="nTq-g2-KfT"/>
@@ -276,8 +276,21 @@
                     <view key="view" contentMode="scaleToFill" id="Ar7-TG-kwq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Px4-Q3-PVI">
+                                <rect key="frame" x="164" y="318" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="didPressLoginButton:" destination="7ra-bf-8zM" eventType="touchUpInside" id="a7o-rl-AyF"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="Px4-Q3-PVI" id="BRP-sm-Hbm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhC-VZ-sFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
