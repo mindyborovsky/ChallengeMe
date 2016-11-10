@@ -1,0 +1,5 @@
+firebase/cocoapods stuff on daniels computer
+bridging header for ObjC fb sdk
+set up fb auth
+
+https://developers.facebook.com/apps/1757596827824382/fb-login/quickstart/
