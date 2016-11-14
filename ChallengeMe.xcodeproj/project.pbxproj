@@ -14,6 +14,7 @@
 		5038432E1DD3E19B009E3DF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5038432C1DD3E19B009E3DF7 /* LaunchScreen.storyboard */; };
 		503843381DD3E64A009E3DF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 503843371DD3E64A009E3DF7 /* GoogleService-Info.plist */; };
 		50393E4D1DD3F5F300634411 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50393E4C1DD3F5F300634411 /* FBSDKLoginKit.framework */; };
+		50A8C0C91DDA3A5800A5A553 /* HomeTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A8C0C81DDA3A5800A5A553 /* HomeTableVC.swift */; };
 		D8ECBFA63CF51D25ECBE4915 /* Pods_ChallengeMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55AFDA20816199582625CCE /* Pods_ChallengeMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		5038432F1DD3E19B009E3DF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503843371DD3E64A009E3DF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		50393E4C1DD3F5F300634411 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		50A8C0C81DDA3A5800A5A553 /* HomeTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableVC.swift; sourceTree = "<group>"; };
 		A58DA11B33AF8B530684C8AD /* Pods-ChallengeMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChallengeMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChallengeMe/Pods-ChallengeMe.debug.xcconfig"; sourceTree = "<group>"; };
 		B55AFDA20816199582625CCE /* Pods_ChallengeMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChallengeMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -87,6 +89,7 @@
 				503843231DD3E19B009E3DF7 /* AppDelegate.swift */,
 				503843251DD3E19B009E3DF7 /* ViewController.swift */,
 				503843271DD3E19B009E3DF7 /* Main.storyboard */,
+				50A8C0C81DDA3A5800A5A553 /* HomeTableVC.swift */,
 				5038432A1DD3E19B009E3DF7 /* Assets.xcassets */,
 				5038432C1DD3E19B009E3DF7 /* LaunchScreen.storyboard */,
 				5038432F1DD3E19B009E3DF7 /* Info.plist */,
@@ -221,6 +224,7 @@
 			files = (
 				503843261DD3E19B009E3DF7 /* ViewController.swift in Sources */,
 				503843241DD3E19B009E3DF7 /* AppDelegate.swift in Sources */,
+				50A8C0C91DDA3A5800A5A553 /* HomeTableVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
