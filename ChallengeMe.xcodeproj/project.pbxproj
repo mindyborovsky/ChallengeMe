@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		212D2CC11DDB7C030081BB31 /* ChallengeCreationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212D2CC01DDB7C030081BB31 /* ChallengeCreationController.swift */; };
+		212D2CC31DDB7D450081BB31 /* challengeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212D2CC21DDB7D450081BB31 /* challengeObject.swift */; };
 		503843241DD3E19B009E3DF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503843231DD3E19B009E3DF7 /* AppDelegate.swift */; };
 		503843261DD3E19B009E3DF7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503843251DD3E19B009E3DF7 /* ViewController.swift */; };
 		503843291DD3E19B009E3DF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503843271DD3E19B009E3DF7 /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		212D2CC01DDB7C030081BB31 /* ChallengeCreationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCreationController.swift; sourceTree = "<group>"; };
+		212D2CC21DDB7D450081BB31 /* challengeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = challengeObject.swift; sourceTree = "<group>"; };
 		39791405F571C8EE47A45BAB /* Pods-ChallengeMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChallengeMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChallengeMe/Pods-ChallengeMe.release.xcconfig"; sourceTree = "<group>"; };
 		503843201DD3E19B009E3DF7 /* ChallengeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChallengeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		503843231DD3E19B009E3DF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 				5038432C1DD3E19B009E3DF7 /* LaunchScreen.storyboard */,
 				5038432F1DD3E19B009E3DF7 /* Info.plist */,
 				503843371DD3E64A009E3DF7 /* GoogleService-Info.plist */,
+				212D2CC01DDB7C030081BB31 /* ChallengeCreationController.swift */,
+				212D2CC21DDB7D450081BB31 /* challengeObject.swift */,
 			);
 			path = ChallengeMe;
 			sourceTree = "<group>";
@@ -221,6 +227,8 @@
 			files = (
 				503843261DD3E19B009E3DF7 /* ViewController.swift in Sources */,
 				503843241DD3E19B009E3DF7 /* AppDelegate.swift in Sources */,
+				212D2CC31DDB7D450081BB31 /* challengeObject.swift in Sources */,
+				212D2CC11DDB7C030081BB31 /* ChallengeCreationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

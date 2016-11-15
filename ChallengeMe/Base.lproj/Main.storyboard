@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HS5-RT-Qo1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HS5-RT-Qo1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -35,10 +35,10 @@
             </objects>
             <point key="canvasLocation" x="1996" y="-73.313343328335833"/>
         </scene>
-        <!--View Controller-->
+        <!--Challenge Creation Controller-->
         <scene sceneID="v1N-yZ-Pjs">
             <objects>
-                <viewController id="aG6-7K-rCj" sceneMemberID="viewController">
+                <viewController id="aG6-7K-rCj" customClass="ChallengeCreationController" customModule="ChallengeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pKs-vU-MiH"/>
                         <viewControllerLayoutGuide type="bottom" id="9PZ-FW-2dv"/>
@@ -72,6 +72,9 @@
                                 <rect key="frame" x="151" y="583" width="73" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Challenge!"/>
+                                <connections>
+                                    <action selector="createChallenge:" destination="aG6-7K-rCj" eventType="touchUpInside" id="Pe2-l0-LtB"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZYo-WG-M8B">
                                 <rect key="frame" x="74" y="92" width="277" height="30"/>
@@ -109,6 +112,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="challengeGoal" destination="6rN-ud-uBj" id="PoK-cv-Srw"/>
+                        <outlet property="challengeName" destination="ZYo-WG-M8B" id="qb6-Ip-zKn"/>
+                        <outlet property="onTheLine" destination="mQo-8u-vdU" id="Jqz-cO-6KL"/>
+                        <outlet property="opponentSearch" destination="h1s-gs-s36" id="vOq-3T-SXJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k3G-Bu-1eh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

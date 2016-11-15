@@ -27,7 +27,10 @@ class ViewController: UIViewController {
         
         ref = FIRDatabase.database().reference()
         
-        self.ref.child("users").child("Users").setValue(["name": "Bill"])
+        self.ref.child("Challenges/challengeOne/creator").setValue("1234")
+        self.ref.child("Challenges/challengeOne/opponent").setValue("5678")
+        self.ref.child("Challenges/challengeOne/goal").setValue("Run 5 miles")
+        self.ref.child("Challenges/challengeOne/bet").setValue("Ted Drewes")
 
         
     }
