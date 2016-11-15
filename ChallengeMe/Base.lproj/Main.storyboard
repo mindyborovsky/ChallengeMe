@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q3m-U9-Df4" id="ffR-dY-0HM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -283,7 +283,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="lnn-YO-ceq"/>
                     <connections>
-                        <segue destination="sLb-nj-rnv" kind="show" identifier="homeSegue" id="3x3-oh-3k2"/>
+                        <segue destination="ryG-6y-FCJ" kind="presentation" identifier="homeSegue" id="Tx3-zz-orV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhC-VZ-sFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -334,6 +334,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ryG-6y-FCJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="pbo-45-PUq">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -347,7 +348,4 @@
             <point key="canvasLocation" x="1056.8" y="244.22788605697153"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="FSE-bP-Cdd"/>
-    </inferredMetricsTieBreakers>
 </document>

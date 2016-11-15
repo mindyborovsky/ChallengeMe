@@ -12,16 +12,17 @@ import FBSDKLoginKit
 
 
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
-    
+    var userLoggedIn = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //let loginButton = FBSDKLoginButton()
-        
-        if (FBSDKAccessToken.current() != nil)
+        userLoggedIn = FBSDKAccessToken.current() != nil
+        if (userLoggedIn)
         {
             // User is already logged in, do work such as go to next view controller.
+            
         }
         else
         {
@@ -32,10 +33,14 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             loginView.delegate = self
         }
     }
-
-    @IBAction func didPressLoginButton(_ sender: UIButton) {
-        
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if (userLoggedIn) {
+        performSegue(withIdentifier: "homeSegue", sender: self)
+        }
     }
+
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -44,7 +49,9 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     // MARK: - FB login delegate
     public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         // check result
+        print("result: %@", result)
         performSegue(withIdentifier: "homeSegue", sender: self)
+        
     }
     
     
@@ -62,6 +69,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
         return true
     }
 

@@ -29,6 +29,7 @@
 		5038432F1DD3E19B009E3DF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503843371DD3E64A009E3DF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		50393E4C1DD3F5F300634411 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		50439E591DDB808100483331 /* ChallengeMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChallengeMe.entitlements; sourceTree = "<group>"; };
 		50A8C0C81DDA3A5800A5A553 /* HomeTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableVC.swift; sourceTree = "<group>"; };
 		A58DA11B33AF8B530684C8AD /* Pods-ChallengeMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChallengeMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChallengeMe/Pods-ChallengeMe.debug.xcconfig"; sourceTree = "<group>"; };
 		B55AFDA20816199582625CCE /* Pods_ChallengeMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChallengeMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +87,7 @@
 		503843221DD3E19B009E3DF7 /* ChallengeMe */ = {
 			isa = PBXGroup;
 			children = (
+				50439E591DDB808100483331 /* ChallengeMe.entitlements */,
 				503843231DD3E19B009E3DF7 /* AppDelegate.swift */,
 				503843251DD3E19B009E3DF7 /* ViewController.swift */,
 				503843271DD3E19B009E3DF7 /* Main.storyboard */,
@@ -133,7 +135,13 @@
 				TargetAttributes = {
 					5038431F1DD3E19A009E3DF7 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = P383X7B8J3;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -348,6 +356,8 @@
 			baseConfigurationReference = A58DA11B33AF8B530684C8AD /* Pods-ChallengeMe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ChallengeMe/ChallengeMe.entitlements;
+				DEVELOPMENT_TEAM = P383X7B8J3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -365,6 +375,8 @@
 			baseConfigurationReference = 39791405F571C8EE47A45BAB /* Pods-ChallengeMe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ChallengeMe/ChallengeMe.entitlements;
+				DEVELOPMENT_TEAM = P383X7B8J3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

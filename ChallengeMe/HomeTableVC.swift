@@ -12,6 +12,8 @@ class HomeTableVC: UITableViewController {
 
     var table = ["a", "b"]
     
+    let sectionTitles = ["Pending Challenges", "Current Challenges", "Past Challenges"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +21,8 @@ class HomeTableVC: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -40,13 +44,19 @@ class HomeTableVC: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return table.count
     }
-
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitles[section]
+    }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         // Configure the cell...
 
+        cell.textLabel?.text = table[indexPath.row]
+        
         return cell
     }
     
