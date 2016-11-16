@@ -8,16 +8,21 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 import FBSDKLoginKit
 
 
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     var userLoggedIn = false
+    @IBOutlet weak var loginButton: UIButton!
+    
+    var ref: FIRDatabaseReference!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //let loginButton = FBSDKLoginButton()
         userLoggedIn = FBSDKAccessToken.current() != nil
         if (userLoggedIn)
         {
@@ -32,6 +37,13 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
         }
+        
+        ref = FIRDatabase.database().reference()
+        
+        self.ref.child("Challenges/challengeOne/creator").setValue("1234")
+        self.ref.child("Challenges/challengeOne/opponent").setValue("5678")
+        self.ref.child("Challenges/challengeOne/goal").setValue("Run 5 miles")
+        self.ref.child("Challenges/challengeOne/bet").setValue("Ted Drewes")
     }
     
     override func viewDidAppear(_ animated: Bool) {
