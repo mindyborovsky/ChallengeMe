@@ -32,7 +32,15 @@
                             <outlet property="delegate" destination="sLb-nj-rnv" id="oyA-7Y-Ttd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="fZM-Kc-xLI"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="fZM-Kc-xLI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rse-wI-mHo">
+                            <connections>
+                                <segue destination="aG6-7K-rCj" kind="show" identifier="createChallengeSegue" id="3Yo-DO-4LL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0vR-LE-jxL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -46,7 +54,7 @@
                         <viewControllerLayoutGuide type="top" id="pKs-vU-MiH"/>
                         <viewControllerLayoutGuide type="bottom" id="9PZ-FW-2dv"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tYa-iE-1hM">
+                    <view key="view" contentMode="scaleToFill" id="tYa-iE-1hM" customClass="Change">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

@@ -7,16 +7,43 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class HomeTableVC: UITableViewController {
 
-    var table = ["a", "b"]
+//    var table: [Challenge] = () {
+//        challenges = [Challenge()]
+//        
+//        return challenges
+//    }
+    var table = ["a", "b", "c"]
     
     let sectionTitles = ["Pending Challenges", "Current Challenges", "Past Challenges"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // get user info
+        if let user = FIRAuth.auth()?.currentUser {
+            // TODO: Multiple profiles?
+            for profile in user.providerData {
+                
+                
+                let name = profile.displayName
+                let email = profile.email
+                //let photoURL = profile.photoURL
+                let uid = profile.uid
+                
+                print(name!)
+                print(uid)
+                print(email!)
+                
+                
+            }
+            
+        } else {
+            
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         tableView.delegate = self

@@ -22,6 +22,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // TODO: Remove this logout
+        FBSDKLoginManager().logOut()
         // Do any additional setup after loading the view, typically from a nib.
         userLoggedIn = FBSDKAccessToken.current() != nil
         if (userLoggedIn)
@@ -61,8 +63,21 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     // MARK: - FB login delegate
     public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         // check result
-        print("result: %@", result)
-        performSegue(withIdentifier: "homeSegue", sender: self)
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        
+        FIRAuth.auth()?.signIn(with: credential) {(user, error) in
+            // handle error
+            if let result = user {
+                print(result)
+                performSegue(withIdentifier: "homeSegue", sender: self)
+            }
+            if let err = error {
+                print(err)
+            }
+            
+        }
+        
+        
         
     }
     
@@ -70,6 +85,28 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         
     }
+    
+    // MARK: - FB User
+    public func getUserInfo(){
+        if let user = FIRAuth.auth()?.currentUser {
+            // TODO: Multiple profiles?
+            for profile in user.providerData {
+                
+            
+            let name = profile.displayName
+            let email = profile.email
+            let photoURL = profile.photoURL
+            let uid = profile.uid
+            
+            }
+            
+        } else {
+            
+        }
+ 
+    }
+    
+//    func getChallenges()
 
         // MARK: - Navigation
         

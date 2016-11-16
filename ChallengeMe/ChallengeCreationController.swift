@@ -24,6 +24,7 @@ class ChallengeCreationController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ref = FIRDatabase.database().reference()
         // Do any additional setup after loading the view.
     }
 
@@ -34,11 +35,23 @@ class ChallengeCreationController: UIViewController {
     
 
     @IBAction func createChallenge(_ sender: Any) {
-        //self.ref.child("Challenges/\(challengeName.text)/creator").setValue(facebookUserID)
+        
+        // add new challenge to challenges db
+        //self.ref.child("Challenges\(challengeName.text)/creator").setValue(facebookUserID)
         self.ref.child("Challenges/\(challengeName.text)/opponent").setValue(opponentSearch.text)
+        print(challengeName.text!)
         self.ref.child("Challenges/\(challengeName.text)/goal").setValue(challengeGoal.text)
         self.ref.child("Challenges/\(challengeName.text)/bet").setValue(onTheLine.text)
         
+        
+        //self.ref.child("Users"/\()
+        // Add challenge to current user
+        // Add challenge to opponent
+        
+        
+        self.navigationController?.popViewController(animated: true)
+        
+        // TODO: alert user challenge is made
     }
     /*
     // MARK: - Navigation

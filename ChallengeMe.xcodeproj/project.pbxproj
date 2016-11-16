@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5010368C1DDCD89400068403 /* ChallengeCreationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010368B1DDCD89400068403 /* ChallengeCreationController.swift */; };
+		5010368E1DDCD89F00068403 /* challengeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010368D1DDCD89F00068403 /* challengeObject.swift */; };
+		501036901DDCDEB000068403 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010368F1DDCDEB000068403 /* User.swift */; };
 		503843241DD3E19B009E3DF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503843231DD3E19B009E3DF7 /* AppDelegate.swift */; };
 		503843261DD3E19B009E3DF7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503843251DD3E19B009E3DF7 /* ViewController.swift */; };
 		503843291DD3E19B009E3DF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503843271DD3E19B009E3DF7 /* Main.storyboard */; };
@@ -20,6 +23,9 @@
 
 /* Begin PBXFileReference section */
 		39791405F571C8EE47A45BAB /* Pods-ChallengeMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChallengeMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChallengeMe/Pods-ChallengeMe.release.xcconfig"; sourceTree = "<group>"; };
+		5010368B1DDCD89400068403 /* ChallengeCreationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCreationController.swift; sourceTree = "<group>"; };
+		5010368D1DDCD89F00068403 /* challengeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = challengeObject.swift; sourceTree = "<group>"; };
+		5010368F1DDCDEB000068403 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		503843201DD3E19B009E3DF7 /* ChallengeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChallengeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		503843231DD3E19B009E3DF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		503843251DD3E19B009E3DF7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,7 +97,10 @@
 				503843231DD3E19B009E3DF7 /* AppDelegate.swift */,
 				503843251DD3E19B009E3DF7 /* ViewController.swift */,
 				503843271DD3E19B009E3DF7 /* Main.storyboard */,
+				5010368F1DDCDEB000068403 /* User.swift */,
 				50A8C0C81DDA3A5800A5A553 /* HomeTableVC.swift */,
+				5010368D1DDCD89F00068403 /* challengeObject.swift */,
+				5010368B1DDCD89400068403 /* ChallengeCreationController.swift */,
 				5038432A1DD3E19B009E3DF7 /* Assets.xcassets */,
 				5038432C1DD3E19B009E3DF7 /* LaunchScreen.storyboard */,
 				5038432F1DD3E19B009E3DF7 /* Info.plist */,
@@ -230,6 +239,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5010368C1DDCD89400068403 /* ChallengeCreationController.swift in Sources */,
+				5010368E1DDCD89F00068403 /* challengeObject.swift in Sources */,
+				501036901DDCDEB000068403 /* User.swift in Sources */,
 				503843261DD3E19B009E3DF7 /* ViewController.swift in Sources */,
 				503843241DD3E19B009E3DF7 /* AppDelegate.swift in Sources */,
 				50A8C0C91DDA3A5800A5A553 /* HomeTableVC.swift in Sources */,
@@ -276,6 +288,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -326,6 +339,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
