@@ -144,7 +144,7 @@
 				TargetAttributes = {
 					5038431F1DD3E19A009E3DF7 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = P383X7B8J3;
+						DevelopmentTeam = 2QT42FZAH3;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -371,7 +371,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ChallengeMe/ChallengeMe.entitlements;
-				DEVELOPMENT_TEAM = P383X7B8J3;
+				DEVELOPMENT_TEAM = 2QT42FZAH3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -390,7 +390,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ChallengeMe/ChallengeMe.entitlements;
-				DEVELOPMENT_TEAM = P383X7B8J3;
+				DEVELOPMENT_TEAM = 2QT42FZAH3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

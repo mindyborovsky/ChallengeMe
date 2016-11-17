@@ -69,7 +69,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             // handle error
             if let result = user {
                 print(result)
-                performSegue(withIdentifier: "homeSegue", sender: self)
+                self.performSegue(withIdentifier: "homeSegue", sender: self)
             }
             if let err = error {
                 print(err)
