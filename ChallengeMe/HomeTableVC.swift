@@ -8,22 +8,60 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class HomeTableVC: UITableViewController {
-
-//    var table: [Challenge] = () {
-//        challenges = [Challenge()]
-//        
-//        return challenges
-//    }
-    var table = ["a", "b", "c"]
+    
+    //    var table: [Challenge] = () {
+    //        challenges = [Challenge()]
+    //
+    //        return challenges
+    //    }
+    var challenges: [[Challenge]] = [[], [], []]
+    let ref: FIRDatabaseReference = FIRDatabase.database().reference()
     
     let sectionTitles = ["Pending Challenges", "Current Challenges", "Past Challenges"]
+    
+    // MARK: - Data
+    func loadChallenges(_ uid: String) {
+
+        // TODO: Use observe correctly and remove observers when necessary
+        ref.child("Users/\(uid)/Challenges").observe(FIRDataEventType.childAdded, with: { (snapshot: FIRDataSnapshot) in
+            //snapshot.value(forKey: <#T##String#>)
+            // TODO: need challenge id from value?
+            let dict: NSDictionary = snapshot.value as! NSDictionary
+            var name: String = ""
+            // TODO: Figure out how to correctly handle childAdded getting called before status is set
+            var status: Int = 1
+            if let nameVal = dict.value(forKey: "name") {
+                name = nameVal as! String
+            }
+            if let statusString = dict.value(forKey:"status") {
+                status = statusString as! Int
+            }
+
+            let challenge = Challenge(name: name, opponent: "test", goal: "test2", reward: "test3", status: status)
+            // this is gonna crash if status is not correct
+            self.challenges[status].append(challenge)
+            // main thread
+            self.tableView.reloadData()
+
+            
+            
+            for node in snapshot.children {
+                //var
+                //var challenge = Challenge()
+                print(node)
+            }
+            })
+    }
+    
+    // MARK: - View
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // get user info
+        // TODO: this sucks
         if let user = FIRAuth.auth()?.currentUser {
             // TODO: Multiple profiles?
             for profile in user.providerData {
@@ -38,6 +76,9 @@ class HomeTableVC: UITableViewController {
                 print(uid)
                 print(email!)
                 
+                // async
+                loadChallenges(uid)
+                
                 
             }
             
@@ -50,26 +91,27 @@ class HomeTableVC: UITableViewController {
         tableView.dataSource = self
         
         
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 3
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return table.count
+        // TODO: check for challenges status
+        return challenges[section].count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -79,58 +121,59 @@ class HomeTableVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-
+        
         // Configure the cell...
-
-        cell.textLabel?.text = table[indexPath.row]
+        
+        cell.textLabel?.text = challenges[indexPath.section][indexPath.row].name
         
         return cell
     }
     
-
+    
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
+     // Override to support editing the table view.
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     if editingStyle == .delete {
+     // Delete the row from the data source
+     tableView.deleteRows(at: [indexPath], with: .fade)
+     } else if editingStyle == .insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

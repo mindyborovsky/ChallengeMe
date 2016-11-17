@@ -124,9 +124,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="challengeGoal" destination="6rN-ud-uBj" id="PoK-cv-Srw"/>
-                        <outlet property="challengeName" destination="ZYo-WG-M8B" id="qb6-Ip-zKn"/>
-                        <outlet property="onTheLine" destination="mQo-8u-vdU" id="Jqz-cO-6KL"/>
+                        <outlet property="challengeGoalField" destination="6rN-ud-uBj" id="mez-ni-Zdq"/>
+                        <outlet property="challengeNameField" destination="ZYo-WG-M8B" id="Bmm-0Q-ZIE"/>
+                        <outlet property="onTheLineField" destination="mQo-8u-vdU" id="dvE-o7-Yzg"/>
                         <outlet property="opponentSearch" destination="h1s-gs-s36" id="vOq-3T-SXJ"/>
                     </connections>
                 </viewController>

@@ -16,6 +16,8 @@ struct Challenge {
     
     var goal: String
     
-    var onTheLine: String
+    var reward: String
+    
+    var status: Int
     
 }
