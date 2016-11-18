@@ -58,7 +58,7 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
             path.move(to: CGPoint(x: self.view.frame.width/2, y: placeOnLine))
             if (each % 2 == 0) {
                 path.addLine(to: CGPoint(x: self.view.frame.width/4, y: placeOnLine))
-                imageFrameX = CGFloat(self.view.frame.width/4)
+                imageFrameX = CGFloat((self.view.frame.width/4)-50)
             }
             else {
                 path.addLine(to: CGPoint(x: (3*self.view.frame.width/4), y: placeOnLine))
@@ -70,15 +70,25 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
             shapeLayer.strokeColor = UIColor.black.cgColor
             tlView.layer.addSublayer(shapeLayer)
             
-            let eventImgFrame = CGRect(x: imageFrameX, y: placeOnLine, width: 50, height: 50)
+            let eventImgFrame = CGRect(x: imageFrameX, y: (placeOnLine - 25), width: 50, height: 50)
             let eventImg = UIImageView(frame: eventImgFrame)
             eventImg.layer.cornerRadius = 25
             eventImg.layer.borderWidth = 3.0
             eventImg.layer.borderColor = UIColor.black.cgColor
             eventImg.layer.backgroundColor = UIColor.black.cgColor
             
-            tlView.layer.addSublayer(shapeLayer)
+            tlView.addSubview(eventImg)
         }
+        
+        let addButton = UIButton(type: .custom)
+        addButton.frame = CGRect(x: ((self.view.frame.width/2)-25), y: (bigFrame.height*(7/8)), width: 50, height: 50)
+        addButton.layer.cornerRadius = 0.5*addButton.bounds.size.width
+        addButton.layer.borderColor = UIColor.black.cgColor
+        addButton.layer.borderWidth = 3.0
+        addButton.clipsToBounds = true
+        addButton.setImage(UIImage(named:"plus.png"), for: .normal)
+        //addButton.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControlEvents#>)
+        tlView.addSubview(addButton)
         
         scrollView.addSubview(tlView)
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: 1000)
