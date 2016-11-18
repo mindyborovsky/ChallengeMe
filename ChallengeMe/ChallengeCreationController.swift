@@ -13,6 +13,7 @@ import FirebaseAuth
 
 class ChallengeCreationController: UIViewController {
     
+    @IBOutlet weak var opponentLabel: UILabel!
      var ref: FIRDatabaseReference!
     
 //    var currentUserProfile = {
@@ -117,6 +118,12 @@ class ChallengeCreationController: UIViewController {
         
         // TODO: alert user challenge is made
     }
+    
+    @IBAction func findFriends(_ sender: UIButton) {
+        
+    }
+    
+    
     /*
     // MARK: - Navigation
 

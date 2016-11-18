@@ -94,11 +94,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h1s-gs-s36">
-                                <rect key="frame" x="111" y="140" width="240" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6rN-ud-uBj">
                                 <rect key="frame" x="111" y="202" width="240" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -120,6 +115,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFF-j2-xq3">
+                                <rect key="frame" x="262" y="147" width="89" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Find Friends!"/>
+                                <connections>
+                                    <action selector="findFriends:" destination="aG6-7K-rCj" eventType="touchUpInside" id="cIz-TY-ebj"/>
+                                    <segue destination="ntP-zH-Sfz" kind="show" id="nzF-kc-4B4"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b40-Y0-h32" userLabel="SelectedOpponent">
+                                <rect key="frame" x="106" y="152" width="150" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -127,12 +138,40 @@
                         <outlet property="challengeGoalField" destination="6rN-ud-uBj" id="mez-ni-Zdq"/>
                         <outlet property="challengeNameField" destination="ZYo-WG-M8B" id="Bmm-0Q-ZIE"/>
                         <outlet property="onTheLineField" destination="mQo-8u-vdU" id="dvE-o7-Yzg"/>
-                        <outlet property="opponentSearch" destination="h1s-gs-s36" id="vOq-3T-SXJ"/>
+                        <outlet property="opponentLabel" destination="b40-Y0-h32" id="n0Y-pz-Jul"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k3G-Bu-1eh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5677.6000000000004" y="-73.313343328335833"/>
+        </scene>
+        <!--Find Friends Controller-->
+        <scene sceneID="Nm2-Z6-GfY">
+            <objects>
+                <tableViewController id="ntP-zH-Sfz" customClass="FindFriendsController" customModule="ChallengeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="InX-dQ-ycd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendCell" id="dCM-Pb-Glq">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dCM-Pb-Glq" id="atW-dN-Oet">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ntP-zH-Sfz" id="a3v-QD-2KS"/>
+                            <outlet property="delegate" destination="ntP-zH-Sfz" id="a93-oj-aMk"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k65-8h-Flm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6550" y="-73"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vBc-AR-7E8">

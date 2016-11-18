@@ -9,13 +9,14 @@
 import Foundation
 
 struct User {
+    var uid: String?
     var name: String?
     var email: String?
     var photoURL: String?
-    var uid: String?
     var token: String?
     
-    init(){
-        
+    init(uid: String, name: String) {
+        self.uid = uid
+        self.name = name
     }
 }
