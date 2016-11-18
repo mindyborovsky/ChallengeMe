@@ -32,7 +32,8 @@ class HomeTableVC: UITableViewController {
             let dict: NSDictionary = snapshot.value as! NSDictionary
             var name: String = ""
             // TODO: Figure out how to correctly handle childAdded getting called before status is set
-            var status: Int = 1
+            // this could be a huge bug.
+            var status: Int = 0
             if let nameVal = dict.value(forKey: "name") {
                 name = nameVal as! String
             }
