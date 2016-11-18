@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		211D71661DDE201A00C5F0F0 /* TimelineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211D71651DDE201A00C5F0F0 /* TimelineVC.swift */; };
 		5010368C1DDCD89400068403 /* ChallengeCreationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010368B1DDCD89400068403 /* ChallengeCreationController.swift */; };
 		5010368E1DDCD89F00068403 /* challengeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010368D1DDCD89F00068403 /* challengeObject.swift */; };
 		501036901DDCDEB000068403 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010368F1DDCDEB000068403 /* User.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		211D71651DDE201A00C5F0F0 /* TimelineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineVC.swift; sourceTree = "<group>"; };
 		39791405F571C8EE47A45BAB /* Pods-ChallengeMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChallengeMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChallengeMe/Pods-ChallengeMe.release.xcconfig"; sourceTree = "<group>"; };
 		5010368B1DDCD89400068403 /* ChallengeCreationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCreationController.swift; sourceTree = "<group>"; };
 		5010368D1DDCD89F00068403 /* challengeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = challengeObject.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				5038432C1DD3E19B009E3DF7 /* LaunchScreen.storyboard */,
 				5038432F1DD3E19B009E3DF7 /* Info.plist */,
 				503843371DD3E64A009E3DF7 /* GoogleService-Info.plist */,
+				211D71651DDE201A00C5F0F0 /* TimelineVC.swift */,
 			);
 			path = ChallengeMe;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				211D71661DDE201A00C5F0F0 /* TimelineVC.swift in Sources */,
 				5010368C1DDCD89400068403 /* ChallengeCreationController.swift in Sources */,
 				5010368E1DDCD89F00068403 /* challengeObject.swift in Sources */,
 				501036901DDCDEB000068403 /* User.swift in Sources */,
