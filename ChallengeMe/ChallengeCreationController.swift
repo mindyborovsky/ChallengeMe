@@ -82,27 +82,43 @@ class ChallengeCreationController: UIViewController {
             // past: 2
             let initialStatus = 0
             
+            var challengeDict: Dictionary<String,Any> = ["goal":""]
+            var userChallengeDict: Dictionary<String,Any> = ["name":""]
+            var opponentChallengeDict: Dictionary<String,Any> = ["name":""]
+            
             if let goal = challengeGoalField.text {
-                self.ref.child("Challenges/\(challengeId)/goal").setValue(goal)
+                challengeDict["goal"] = goal
+                //self.ref.child("Challenges/\(challengeId)/goal").setValue(goal)
             }
             if let reward = onTheLineField.text {
-                self.ref.child("Challenges/\(challengeId)/reward").setValue(reward)
+                challengeDict["reward"] = reward
+                //self.ref.child("Challenges/\(challengeId)/reward").setValue(reward)
             }
             if let opponent = self.opponent {
-                self.ref.child("Challenges/\(challengeName)/opponent").setValue(opponent.uid)
-                self.ref.child("Users/\(opponent.uid!)/Challenges/\(challengeId)/name").setValue(challengeName)
-                self.ref.child("Users/\(opponent.uid!)/Challenges/\(challengeId)/status").setValue(initialStatus)
-                self.ref.child("Users/\(opponent.uid!)/Challenges/\(challengeId)/creator").setValue(false)
+                challengeDict["opponent"] = opponent.uid
+                //self.ref.child("Challenges/\(challengeName)/opponent").setValue(opponent.uid)
+                opponentChallengeDict["name"] = challengeName
+                opponentChallengeDict["status"] = initialStatus
+                opponentChallengeDict["creator"] = false
+                self.ref.child("Users/\(opponent.uid!)/Challenges/\(challengeId)").setValue(opponentChallengeDict)
+//                self.ref.child("Users/\(opponent.uid!)/Challenges/\(challengeId)/name").setValue(challengeName)
+//                self.ref.child("Users/\(opponent.uid!)/Challenges/\(challengeId)/status").setValue(initialStatus)
+//                self.ref.child("Users/\(opponent.uid!)/Challenges/\(challengeId)/creator").setValue(false)
             }
-            
-            self.ref.child("Challenges/\(challengeId)/status").setValue(initialStatus)
-            
-            self.ref.child("Challenges/\(challengeId)/name").setValue(challengeName)
+            challengeDict["status"] = initialStatus
+            //self.ref.child("Challenges/\(challengeId)/status").setValue(initialStatus)
+            challengeDict["name"] = challengeName
+//            self.ref.child("Challenges/\(challengeId)/name").setValue(challengeName)
         
-          
-            self.ref.child("Users/\(uid!)/Challenges/\(challengeId)/name").setValue(challengeName)
-            self.ref.child("Users/\(uid!)/Challenges/\(challengeId)/status").setValue(initialStatus)
-            self.ref.child("Users/\(uid!)/Challenges/\(challengeId)/creator").setValue(true)
+            userChallengeDict["name"] = challengeName
+            userChallengeDict["status"] = initialStatus
+            userChallengeDict["creator"] = true
+//            self.ref.child("Users/\(uid!)/Challenges/\(challengeId)/name").setValue(challengeName)
+//            self.ref.child("Users/\(uid!)/Challenges/\(challengeId)/status").setValue(initialStatus)
+//            self.ref.child("Users/\(uid!)/Challenges/\(challengeId)/creator").setValue(true)
+             self.ref.child("Challenges/\(challengeId)").setValue(challengeDict)
+            self.ref.child("Users/\(uid!)/Challenges/\(challengeId)").setValue(userChallengeDict)
+            
             
         //self.ref.child("Users"/\()
         // Add challenge to current user

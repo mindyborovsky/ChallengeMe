@@ -423,7 +423,7 @@
         <scene sceneID="JqF-0Z-plW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jHb-6a-JiN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stats" id="evp-vN-vah"/>
+                    <tabBarItem key="tabBarItem" title="Stats" image="pie-chart-7.png" id="evp-vN-vah"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OrS-Rs-lf5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -438,11 +438,11 @@
             </objects>
             <point key="canvasLocation" x="1996" y="579.76011994002999"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="PS1-oP-L0b">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GkL-OR-Rqa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="BVP-Tl-i1t"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home-7.png" id="BVP-Tl-i1t"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="v8e-V8-0pA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -477,4 +477,8 @@
             <point key="canvasLocation" x="1056.8" y="244.22788605697153"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="home-7.png" width="30" height="30"/>
+        <image name="pie-chart-7.png" width="30" height="30"/>
+    </resources>
 </document>

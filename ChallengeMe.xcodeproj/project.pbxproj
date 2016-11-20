@@ -10,6 +10,8 @@
 		211D71661DDE201A00C5F0F0 /* TimelineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211D71651DDE201A00C5F0F0 /* TimelineVC.swift */; };
 		211D71681DDF77EC00C5F0F0 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 211D71671DDF77EC00C5F0F0 /* plus.png */; };
 		211D716A1DE2480200C5F0F0 /* AcceptChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211D71691DE2480200C5F0F0 /* AcceptChallenge.swift */; };
+		211D716D1DE25E5500C5F0F0 /* home-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 211D716B1DE25E5500C5F0F0 /* home-7.png */; };
+		211D716E1DE25E5500C5F0F0 /* pie-chart-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 211D716C1DE25E5500C5F0F0 /* pie-chart-7.png */; };
 		5010368C1DDCD89400068403 /* ChallengeCreationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010368B1DDCD89400068403 /* ChallengeCreationController.swift */; };
 		5010368E1DDCD89F00068403 /* challengeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010368D1DDCD89F00068403 /* challengeObject.swift */; };
 		501036901DDCDEB000068403 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010368F1DDCDEB000068403 /* User.swift */; };
@@ -29,6 +31,8 @@
 		211D71651DDE201A00C5F0F0 /* TimelineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineVC.swift; sourceTree = "<group>"; };
 		211D71671DDF77EC00C5F0F0 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		211D71691DE2480200C5F0F0 /* AcceptChallenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptChallenge.swift; sourceTree = "<group>"; };
+		211D716B1DE25E5500C5F0F0 /* home-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-7.png"; sourceTree = "<group>"; };
+		211D716C1DE25E5500C5F0F0 /* pie-chart-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pie-chart-7.png"; sourceTree = "<group>"; };
 		39791405F571C8EE47A45BAB /* Pods-ChallengeMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChallengeMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChallengeMe/Pods-ChallengeMe.release.xcconfig"; sourceTree = "<group>"; };
 		5010368B1DDCD89400068403 /* ChallengeCreationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCreationController.swift; sourceTree = "<group>"; };
 		5010368D1DDCD89F00068403 /* challengeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = challengeObject.swift; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 				503843371DD3E64A009E3DF7 /* GoogleService-Info.plist */,
 				211D71651DDE201A00C5F0F0 /* TimelineVC.swift */,
 				211D71671DDF77EC00C5F0F0 /* plus.png */,
+				211D716B1DE25E5500C5F0F0 /* home-7.png */,
+				211D716C1DE25E5500C5F0F0 /* pie-chart-7.png */,
 				211D71691DE2480200C5F0F0 /* AcceptChallenge.swift */,
 			);
 			path = ChallengeMe;
@@ -189,11 +195,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				211D716D1DE25E5500C5F0F0 /* home-7.png in Resources */,
 				5038432E1DD3E19B009E3DF7 /* LaunchScreen.storyboard in Resources */,
 				503843381DD3E64A009E3DF7 /* GoogleService-Info.plist in Resources */,
 				5038432B1DD3E19B009E3DF7 /* Assets.xcassets in Resources */,
 				503843291DD3E19B009E3DF7 /* Main.storyboard in Resources */,
 				211D71681DDF77EC00C5F0F0 /* plus.png in Resources */,
+				211D716E1DE25E5500C5F0F0 /* pie-chart-7.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
