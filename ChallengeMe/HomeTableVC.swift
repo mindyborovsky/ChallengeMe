@@ -38,7 +38,7 @@ class HomeTableVC: UITableViewController {
             // TODO: Figure out how to correctly handle childAdded getting called before status is set
             // this could be a huge bug.
             var status: Int = 0
-            var creator: Bool = false
+            var creator: Bool = true
             if let nameVal = dict.value(forKey: "name") {
                 name = nameVal as! String
             }
@@ -109,6 +109,12 @@ class HomeTableVC: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        challenges = [[], [], []]
+//        tableView.reloadData()
+//        loadChallenges(userID)
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
