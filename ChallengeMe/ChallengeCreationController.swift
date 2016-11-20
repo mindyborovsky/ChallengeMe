@@ -92,6 +92,7 @@ class ChallengeCreationController: UIViewController {
                 self.ref.child("Challenges/\(challengeName)/opponent").setValue(opponent.uid)
                 self.ref.child("Users/\(opponent.uid!)/Challenges/\(challengeId)/name").setValue(challengeName)
                 self.ref.child("Users/\(opponent.uid!)/Challenges/\(challengeId)/status").setValue(initialStatus)
+                self.ref.child("Users/\(opponent.uid!)/Challenges/\(challengeId)/creator").setValue(false)
             }
             
             self.ref.child("Challenges/\(challengeId)/status").setValue(initialStatus)
@@ -101,6 +102,7 @@ class ChallengeCreationController: UIViewController {
           
             self.ref.child("Users/\(uid!)/Challenges/\(challengeId)/name").setValue(challengeName)
             self.ref.child("Users/\(uid!)/Challenges/\(challengeId)/status").setValue(initialStatus)
+            self.ref.child("Users/\(uid!)/Challenges/\(challengeId)/creator").setValue(true)
             
         //self.ref.child("Users"/\()
         // Add challenge to current user

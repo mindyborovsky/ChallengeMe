@@ -24,6 +24,8 @@ class HomeTableVC: UITableViewController {
     
     let sectionTitles = ["Pending Challenges", "Current Challenges", "Past Challenges"]
     
+    var userID = String()
+    
     // MARK: - Data
     func loadChallenges(_ uid: String) {
 
@@ -36,14 +38,22 @@ class HomeTableVC: UITableViewController {
             // TODO: Figure out how to correctly handle childAdded getting called before status is set
             // this could be a huge bug.
             var status: Int = 0
+            var creator: Bool = false
             if let nameVal = dict.value(forKey: "name") {
                 name = nameVal as! String
             }
             if let statusString = dict.value(forKey:"status") {
                 status = statusString as! Int
             }
-
-            let challenge = Challenge(name: name, opponent: "test", goal: "test2", reward: "test3", status: status)
+            if let creatorBool = dict.value(forKey:"creator") {
+                creator = creatorBool as! Bool
+                print(name)
+                print(creatorBool as! Bool)
+                print(creator)
+            }
+            
+            
+            let challenge = Challenge(name: name, opponent: "", creator: creator, goal: "", goal2: "", reward: "", status: status)
             // this is gonna crash if status is not correct
             self.challenges[status].append(challenge)
             // main thread
@@ -74,6 +84,7 @@ class HomeTableVC: UITableViewController {
                 let email = profile.email
                 //let photoURL = profile.photoURL
                 let uid = profile.uid
+                userID = profile.uid
                 
                 print(name!)
                 print(uid)
@@ -134,7 +145,15 @@ class HomeTableVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedChallenge = challenges[indexPath.section][indexPath.row]
-        self.performSegue(withIdentifier: "TimelineSegue", sender: self)
+        if (selectedChallenge?.status != 0) {
+            self.performSegue(withIdentifier: "TimelineSegue", sender: self)
+        }
+        else {
+            if (selectedChallenge?.creator == false) {
+                self.performSegue(withIdentifier: "AcceptSegue", sender: self)
+            }
+            
+        }
     }
     
     
@@ -181,7 +200,7 @@ class HomeTableVC: UITableViewController {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination.isKind(of: TimelineVC.self) {
             let vc = segue.destination as! TimelineVC
-            vc.challengeName = selectedChallenge!.name
+            vc.currChallenge = selectedChallenge!
         }
      }
  

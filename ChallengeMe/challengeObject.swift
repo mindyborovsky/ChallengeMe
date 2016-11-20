@@ -14,7 +14,11 @@ struct Challenge {
     
     var opponent: String
     
+    var creator: Bool
+    
     var goal: String
+    
+    var goal2: String
     
     var reward: String
     
