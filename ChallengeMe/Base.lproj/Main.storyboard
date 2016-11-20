@@ -134,10 +134,10 @@
             </objects>
             <point key="canvasLocation" x="5677.6000000000004" y="-73.313343328335833"/>
         </scene>
-        <!--TimelineVC-->
+        <!--View Controller-->
         <scene sceneID="vBc-AR-7E8">
             <objects>
-                <viewController id="ZOI-eI-eWt" customClass="TimelineVC" customModule="ChallengeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZOI-eI-eWt" customClass="ViewController" customModule="ChallengeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="T3k-NE-2Ry"/>
                         <viewControllerLayoutGuide type="bottom" id="tUv-Z3-jhn"/>
@@ -268,16 +268,6 @@
                     <view key="view" contentMode="scaleToFill" id="oDw-Cm-sMz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiZ-kN-1dW">
-                                <rect key="frame" x="164" y="287" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="ZOI-eI-eWt" kind="show" id="Lqb-jT-eoS"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="sMX-SD-Ksl"/>
