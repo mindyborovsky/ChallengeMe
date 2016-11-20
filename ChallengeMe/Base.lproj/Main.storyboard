@@ -41,6 +41,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="ZOI-eI-eWt" kind="show" identifier="TimelineSegue" id="9k6-vV-0DS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0vR-LE-jxL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -173,10 +176,10 @@
             </objects>
             <point key="canvasLocation" x="6550" y="-73"/>
         </scene>
-        <!--View Controller-->
+        <!--TimelineVC-->
         <scene sceneID="vBc-AR-7E8">
             <objects>
-                <viewController id="ZOI-eI-eWt" customClass="ViewController" customModule="ChallengeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZOI-eI-eWt" customClass="TimelineVC" customModule="ChallengeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="T3k-NE-2Ry"/>
                         <viewControllerLayoutGuide type="bottom" id="tUv-Z3-jhn"/>
@@ -186,10 +189,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ID-JU-x3I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3799.1999999999998" y="580.65967016491754"/>
+            <point key="canvasLocation" x="4876" y="669"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="dx5-eK-9tf">
@@ -294,7 +298,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ow6-Jq-Wnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4628" y="580.65967016491754"/>
+            <point key="canvasLocation" x="5678" y="580"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="4SK-qV-65s">

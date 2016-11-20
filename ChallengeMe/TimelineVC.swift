@@ -10,6 +10,11 @@ import UIKit
 
 class TimelineVC: UIViewController, UIScrollViewDelegate {
     
+    
+    var challengeName = String()
+    
+    var navTitle = UINavigationItem(title: "navTitle")
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         print("in did scroll")
@@ -22,6 +27,10 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        navTitle.title = challengeName
+
+        self.title = challengeName
         
         let theFrame = CGRect(x:0, y:0, width: self.view.frame.width, height: self.view.frame.height)
         
@@ -98,7 +107,6 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

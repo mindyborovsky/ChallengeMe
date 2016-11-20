@@ -20,6 +20,8 @@ class HomeTableVC: UITableViewController {
     var challenges: [[Challenge]] = [[], [], []]
     let ref: FIRDatabaseReference = FIRDatabase.database().reference()
     
+    var selectedChallenge: Challenge?
+    
     let sectionTitles = ["Pending Challenges", "Current Challenges", "Past Challenges"]
     
     // MARK: - Data
@@ -130,6 +132,11 @@ class HomeTableVC: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedChallenge = challenges[indexPath.section][indexPath.row]
+        self.performSegue(withIdentifier: "TimelineSegue", sender: self)
+    }
+    
     
     /*
      // Override to support conditional editing of the table view.
@@ -167,14 +174,16 @@ class HomeTableVC: UITableViewController {
      */
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+      //MARK: - Navigation
+    
+      //In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+        if segue.destination.isKind(of: TimelineVC.self) {
+            let vc = segue.destination as! TimelineVC
+            vc.challengeName = selectedChallenge!.name
+        }
      }
-     */
+ 
     
 }
