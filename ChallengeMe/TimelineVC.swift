@@ -11,7 +11,8 @@ import UIKit
 class TimelineVC: UIViewController, UIScrollViewDelegate {
     
     
-    var currChallenge = Challenge(name: "name", opponent: "test", creator: false, goal: "test2", goal2: "test4", reward: "test3", status: 0)
+    var currChallenge = Challenge(name: "name", opponent: "test", creatorID: 2932, goal: "test2", goal2: "test4", reward: "test3", status: 0)
+    var userChallenge: UserChallenge?
     
     var navTitle = UINavigationItem(title: "navTitle")
     
@@ -27,6 +28,8 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
+        currChallenge.name = userChallenge?.name
         
         navTitle.title = currChallenge.name
 

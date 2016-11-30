@@ -75,7 +75,11 @@ class ChallengeCreationController: UIViewController {
         //self.ref.child("Challenges\(challengeName.text)/creator").setValue(facebookUserID)
         if let challengeName = challengeNameField.text {
             //TODO: Clean up optional ivars and challenge name to challenge id
-            let challengeId = challengeName
+            var opponentId: String = ""
+            if let opponent = self.opponent {
+                opponentId = opponent.uid!
+            }
+            let challengeId = Challenge.generateID(name: challengeName, creator: uid!, opponent: opponentId)
             // TODO: project wide constants
             // pending: 0
             // current: 1
@@ -99,7 +103,13 @@ class ChallengeCreationController: UIViewController {
                 //self.ref.child("Challenges/\(challengeName)/opponent").setValue(opponent.uid)
                 opponentChallengeDict["name"] = challengeName
                 opponentChallengeDict["status"] = initialStatus
+                opponentChallengeDict["opponent"] = uid!
                 opponentChallengeDict["creator"] = false
+                opponentChallengeDict["id"] = challengeId
+                
+                
+                userChallengeDict["opponent"] = opponent.uid
+                
                 self.ref.child("Users/\(opponent.uid!)/Challenges/\(challengeId)").setValue(opponentChallengeDict)
 //                self.ref.child("Users/\(opponent.uid!)/Challenges/\(challengeId)/name").setValue(challengeName)
 //                self.ref.child("Users/\(opponent.uid!)/Challenges/\(challengeId)/status").setValue(initialStatus)
@@ -108,11 +118,14 @@ class ChallengeCreationController: UIViewController {
             challengeDict["status"] = initialStatus
             //self.ref.child("Challenges/\(challengeId)/status").setValue(initialStatus)
             challengeDict["name"] = challengeName
+            challengeDict["creator"] = uid!
 //            self.ref.child("Challenges/\(challengeId)/name").setValue(challengeName)
         
             userChallengeDict["name"] = challengeName
             userChallengeDict["status"] = initialStatus
             userChallengeDict["creator"] = true
+            userChallengeDict["id"] = challengeId
+            
 //            self.ref.child("Users/\(uid!)/Challenges/\(challengeId)/name").setValue(challengeName)
 //            self.ref.child("Users/\(uid!)/Challenges/\(challengeId)/status").setValue(initialStatus)
 //            self.ref.child("Users/\(uid!)/Challenges/\(challengeId)/creator").setValue(true)

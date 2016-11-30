@@ -10,18 +10,25 @@ import Foundation
 
 struct Challenge {
     
-    var name: String
+    var name: String?
     
-    var opponent: String
+    var opponent: String?
     
-    var creator: Bool
+    var creatorID: Int?
     
-    var goal: String
+    var goal: String?
     
-    var goal2: String
+    var goal2: String?
     
-    var reward: String
+    var reward: String?
     
-    var status: Int
+    var status: Int?
+    
+    static func generateID(name: String, creator: String, opponent: String) -> String{
+        let id = name + creator + opponent + String(arc4random())
+        return id
+    }
+    
+    
     
 }

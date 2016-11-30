@@ -23,17 +23,67 @@ class AcceptChallenge: UIViewController {
     
     @IBOutlet weak var yourGoal: UITextField!
     
-    var currChallenge = Challenge(name: "name", opponent: "test", creator: false, goal: "test2", goal2: "test4", reward: "test3", status: 0)
+    var userChallenge: UserChallenge?
+    
+    var challenge: Challenge = Challenge()
+    
+    var opponentName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         ref = FIRDatabase.database().reference()
+        var challengeID: String
+        if let challenge = userChallenge {
+            self.challenge.opponent = challenge.opponent
+            challengeID = challenge.id
+            self.challenge.name = challenge.name
         
-        //challenger.text = currChallenge.
         
+        // TODO: get the challenge from challenge id
+        ref.child("Challenge").child(challengeID).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+           
+            self.opponentName = value?["opponent"] as? String ?? ""
+            
+            
+            
+             self.challenge = Challenge()
+            self.updateView()
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        
+        
+
+        
+        
+        ref.child("Users").child(challenge.opponent).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            self.opponentName = value?["Name"] as? String ?? ""
+            self.updateView()
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        }
+        
+
+            
+        
+        
+    }
+    
+    func updateView() {
+        challenger.text =  opponentName! + " challenged you!"
+        opponentGoal.text = opponentName! + "'s goal is to " + (challenge.goal)!
+        onTheLine.text = challenge.reward
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,8 +94,8 @@ class AcceptChallenge: UIViewController {
 
     
     @IBAction func acceptButton(_ sender: Any) {
-        self.ref.child("Challenges/\(currChallenge.name)/status").setValue(1)
-        self.ref.child("Challenges/\(currChallenge.name)/goal2").setValue(yourGoal.text!)
+        //self.ref.child("Challenges/\(challenge!.name)/status").setValue(1)
+        //self.ref.child("Challenges/\(currChallenge!.name)/goal2").setValue(yourGoal.text!)
         
         self.navigationController?.popViewController(animated: true)
     }
