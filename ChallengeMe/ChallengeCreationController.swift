@@ -72,7 +72,6 @@ class ChallengeCreationController: UIViewController {
         //TODO: Create unique challenge id and separate users db logic from challenges db logic
         // TODO: disable button until challenge is valid
         // add new challenge to challenges db
-        //self.ref.child("Challenges\(challengeName.text)/creator").setValue(facebookUserID)
         if let challengeName = challengeNameField.text {
             //TODO: Clean up optional ivars and challenge name to challenge id
             var opponentId: String = ""
@@ -80,26 +79,25 @@ class ChallengeCreationController: UIViewController {
                 opponentId = opponent.uid!
             }
             let challengeId = Challenge.generateID(name: challengeName, creator: uid!, opponent: opponentId)
+            
             // TODO: project wide constants
             // pending: 0
             // current: 1
             // past: 2
             let initialStatus = 0
-            
-            var challengeDict: Dictionary<String,Any> = ["goal":""]
             var userChallengeDict: Dictionary<String,Any> = ["name":""]
             var opponentChallengeDict: Dictionary<String,Any> = ["name":""]
             
+            var newChallenge = Challenge()
+            
             if let goal = challengeGoalField.text {
-                challengeDict["goal"] = goal
-                //self.ref.child("Challenges/\(challengeId)/goal").setValue(goal)
+                newChallenge.creatorGoal = goal
             }
             if let reward = onTheLineField.text {
-                challengeDict["reward"] = reward
-                //self.ref.child("Challenges/\(challengeId)/reward").setValue(reward)
+                newChallenge.reward = reward
             }
             if let opponent = self.opponent {
-                challengeDict["opponent"] = opponent.uid
+                newChallenge.opponentId = opponent.uid
                 //self.ref.child("Challenges/\(challengeName)/opponent").setValue(opponent.uid)
                 opponentChallengeDict["name"] = challengeName
                 opponentChallengeDict["status"] = initialStatus
@@ -111,25 +109,20 @@ class ChallengeCreationController: UIViewController {
                 userChallengeDict["opponent"] = opponent.uid
                 
                 self.ref.child("Users/\(opponent.uid!)/Challenges/\(challengeId)").setValue(opponentChallengeDict)
-//                self.ref.child("Users/\(opponent.uid!)/Challenges/\(challengeId)/name").setValue(challengeName)
-//                self.ref.child("Users/\(opponent.uid!)/Challenges/\(challengeId)/status").setValue(initialStatus)
-//                self.ref.child("Users/\(opponent.uid!)/Challenges/\(challengeId)/creator").setValue(false)
             }
-            challengeDict["status"] = initialStatus
-            //self.ref.child("Challenges/\(challengeId)/status").setValue(initialStatus)
-            challengeDict["name"] = challengeName
-            challengeDict["creator"] = uid!
-//            self.ref.child("Challenges/\(challengeId)/name").setValue(challengeName)
+            
+            newChallenge.id = challengeId
+            newChallenge.status = initialStatus
+            newChallenge.name = challengeName
+            newChallenge.creatorId = uid!
         
             userChallengeDict["name"] = challengeName
+            // TODO: Change this to automatically accepted
             userChallengeDict["status"] = initialStatus
             userChallengeDict["creator"] = true
             userChallengeDict["id"] = challengeId
             
-//            self.ref.child("Users/\(uid!)/Challenges/\(challengeId)/name").setValue(challengeName)
-//            self.ref.child("Users/\(uid!)/Challenges/\(challengeId)/status").setValue(initialStatus)
-//            self.ref.child("Users/\(uid!)/Challenges/\(challengeId)/creator").setValue(true)
-             self.ref.child("Challenges/\(challengeId)").setValue(challengeDict)
+            newChallenge.saveToFirebase(ref: self.ref)
             self.ref.child("Users/\(uid!)/Challenges/\(challengeId)").setValue(userChallengeDict)
             
             

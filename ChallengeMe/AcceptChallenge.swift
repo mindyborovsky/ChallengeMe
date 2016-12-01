@@ -17,7 +17,7 @@ class AcceptChallenge: UIViewController {
     
     @IBOutlet weak var challenger: UILabel!
     
-    @IBOutlet weak var opponentGoal: UILabel!
+    @IBOutlet weak var creatorGoal: UILabel!
     
     @IBOutlet weak var onTheLine: UILabel!
     
@@ -27,7 +27,8 @@ class AcceptChallenge: UIViewController {
     
     var challenge: Challenge = Challenge()
     
-    var opponentName: String?
+    var creatorName: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,23 +36,18 @@ class AcceptChallenge: UIViewController {
         // Do any additional setup after loading the view.
         
         ref = FIRDatabase.database().reference()
-        var challengeID: String
+        var challengeId: String
+        var opponentId: String = ""
         if let challenge = userChallenge {
-            self.challenge.opponent = challenge.opponent
-            challengeID = challenge.id
+            opponentId = challenge.opponent
+            challengeId = challenge.id
             self.challenge.name = challenge.name
         
-        
-        // TODO: get the challenge from challenge id
-        ref.child("Challenge").child(challengeID).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+        ref.child("Challenges").child(challengeId).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
             // Get user value
-            let value = snapshot.value as? NSDictionary
-           
-            self.opponentName = value?["opponent"] as? String ?? ""
+            self.challenge = Challenge.initWith(snapshot: snapshot)
             
-            
-            
-             self.challenge = Challenge()
+        
             self.updateView()
             
         }) { (error) in
@@ -63,10 +59,10 @@ class AcceptChallenge: UIViewController {
 
         
         
-        ref.child("Users").child(challenge.opponent).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("Users").child(opponentId).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
-            self.opponentName = value?["Name"] as? String ?? ""
+            self.creatorName = value?["Name"] as? String ?? ""
             self.updateView()
             // ...
         }) { (error) in
@@ -81,8 +77,10 @@ class AcceptChallenge: UIViewController {
     }
     
     func updateView() {
-        challenger.text =  opponentName! + " challenged you!"
-        opponentGoal.text = opponentName! + "'s goal is to " + (challenge.goal)!
+        if let challengerName = creatorName {
+        challenger.text =  (challengerName) + " challenged you!"
+        creatorGoal.text = (challengerName) + "'s goal is to " + (challenge.creatorGoal)!
+        }
         onTheLine.text = challenge.reward
     }
 
