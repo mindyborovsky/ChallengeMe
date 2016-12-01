@@ -31,7 +31,7 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
         navTitle.title = currChallenge.name
 
         self.title = currChallenge.name
-        
+        print(currChallenge.status)
         let theFrame = CGRect(x:0, y:0, width: self.view.frame.width, height: self.view.frame.height)
         
         let scrollView = UIScrollView(frame: theFrame)
@@ -60,6 +60,9 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
         shapeLayer.strokeColor = UIColor.black.cgColor
         tlView.layer.addSublayer(shapeLayer)
         
+        // Right now I am just doing ten events
+        // We need to query the DB (possibly done in previous VC and set as an array on segue to this VC), and iterate through all of the events.
+        // For each event, we will check what user it is, and then add it to the given side of the timeline. Logged in user's challenges will be on the left. Opponent's challenges will be on the right.
         for each in 1...10 {
             let path = UIBezierPath();
             let placeOnLine = CGFloat(each*50)
@@ -79,25 +82,44 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
             shapeLayer.strokeColor = UIColor.black.cgColor
             tlView.layer.addSublayer(shapeLayer)
             
-            let eventImgFrame = CGRect(x: imageFrameX, y: (placeOnLine - 25), width: 50, height: 50)
-            let eventImg = UIImageView(frame: eventImgFrame)
-            eventImg.layer.cornerRadius = 25
-            eventImg.layer.borderWidth = 3.0
-            eventImg.layer.borderColor = UIColor.black.cgColor
-            eventImg.layer.backgroundColor = UIColor.black.cgColor
-            
-            tlView.addSubview(eventImg)
+            let eventButtonFrame = CGRect(x: imageFrameX, y: (placeOnLine - 25), width: 50, height: 50)
+            let eventButton = UIButton(type: .custom)
+            eventButton.frame = eventButtonFrame
+            eventButton.layer.cornerRadius = 25
+            eventButton.layer.borderWidth = 3.0
+            eventButton.layer.borderColor = UIColor.black.cgColor
+            eventButton.layer.backgroundColor = UIColor.black.cgColor
+//          May want to se the eventButton tag to some type of id of the event
+            eventButton.addTarget(self, action: #selector(eventButtonClick), for: UIControlEvents.touchUpInside)
+            tlView.addSubview(eventButton)
         }
         
-        let addButton = UIButton(type: .custom)
-        addButton.frame = CGRect(x: ((self.view.frame.width/2)-25), y: (bigFrame.height*(7/8)), width: 50, height: 50)
-        addButton.layer.cornerRadius = 0.5*addButton.bounds.size.width
-        addButton.layer.borderColor = UIColor.black.cgColor
-        addButton.layer.borderWidth = 3.0
-        addButton.clipsToBounds = true
-        addButton.setImage(UIImage(named:"plus.png"), for: .normal)
-        //addButton.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControlEvents#>)
-        tlView.addSubview(addButton)
+        if (currChallenge.status == 1) {
+            let addButton = UIButton(type: .custom)
+            addButton.frame = CGRect(x: ((self.view.frame.width/2)-25), y: (bigFrame.height*(7/8)), width: 50, height: 50)
+            addButton.layer.cornerRadius = 0.5*addButton.bounds.size.width
+            addButton.layer.borderColor = UIColor.black.cgColor
+            addButton.layer.borderWidth = 3.0
+            addButton.clipsToBounds = true
+            addButton.setImage(UIImage(named:"plus.png"), for: .normal)
+            addButton.tag = 5
+            addButton.addTarget(self, action: #selector(addButtonClick), for: UIControlEvents.touchUpInside)
+            tlView.addSubview(addButton)
+        }
+        else {
+            let addButton = UIButton(type: .custom)
+            addButton.frame = CGRect(x: ((self.view.frame.width/2)-150), y: (bigFrame.height*(7/8)), width: 300, height: 50)
+//            addButton.layer.cornerRadius = 0.5*addButton.bounds.size.width
+            addButton.layer.borderColor = UIColor.black.cgColor
+            addButton.layer.borderWidth = 3.0
+            addButton.clipsToBounds = true
+            addButton.setTitle("Completed!", for: .normal)
+//            addButton.setImage(UIImage(named:"plus.png"), for: .normal)
+//            addButton.tag = 5
+//            addButton.addTarget(self, action: #selector(addButtonClick), for: UIControlEvents.touchUpInside)
+            tlView.addSubview(addButton)
+        }
+        
         
         scrollView.addSubview(tlView)
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: 1000)
@@ -107,7 +129,26 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func addButtonClick(sender: UIButton) {
+        if (sender.tag == 5) {
+            self.performSegue(withIdentifier: "timelineToCreateEvent", sender: self)
+        }
+    }
+    
+    func eventButtonClick(sender: UIButton) {
+        self.performSegue(withIdentifier: "timelineToViewEvent", sender: self)
+    }
+    
+    // This is what will be performed on segues from timeline to the View Event and Create Event Controllers
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Segue for adding an event
+        if segue.destination.isKind(of: AddEventVC.self) {
+            // Things we will need here:
+            // Figure out how many events have already been created (we already have to do this above to generate the timeline) and then set a variable in AddEventVC that indicates how many events already exist. We will then set the "id" of the event to one more than the number of events that exist (think about if we are going to index at 0 or 1).
+            // I'm not sure if we will have to set this or if we can just get this value by virtue of being logged in, but we need to know the logged in User's ID so that we can associate the event with the proper user.
+        }
+    }
     /*
     // MARK: - Navigation
 
