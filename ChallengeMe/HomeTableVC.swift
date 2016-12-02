@@ -29,14 +29,63 @@ class HomeTableVC: UITableViewController {
     // MARK: - Data
     func loadChallenges(_ uid: String) {
 
+        ref.child("Users/\(uid)/Challenges").observe(FIRDataEventType.childChanged, with: { (snapshot: FIRDataSnapshot) in
+            // TODO: Clean this up into a UserChallenge method
+            let dict: NSDictionary = snapshot.value as! NSDictionary
+            var name: String = ""
+            var status: Int = 0
+            var creator: Bool = true
+            var opponent: String = ""
+            var id: String = ""
+            if let nameVal = dict.value(forKey: "name") {
+                name = nameVal as! String
+            }
+            if let statusString = dict.value(forKey:"status") {
+                status = statusString as! Int
+            }
+            if let creatorBool = dict.value(forKey:"creator") {
+                creator = creatorBool as! Bool
+                print(name)
+                print(creatorBool as! Bool)
+                print(creator)
+            }
+            if let opponentString = dict.value(forKey:"opponent") {
+                opponent = opponentString as! String
+            }
+            if let idString = dict.value(forKey:"id") {
+                id = idString as! String
+            }
+            
+            
+            let challenge = UserChallenge(creator: creator, name: name, status: status, opponent:opponent, id: id)
+            self.challenges[status].append(challenge)
+            /*
+            for i in 0..<self.challenges[status].count {
+                if self.challenges[status][i].id == challenge.id {
+                    self.challenges[status][i] = challenge
+                }
+            }
+            self.challenges[status].append(challenge)
+            for i in 0..3 {
+                self.challenges[i]
+                
+                }
+            }
+            for iter in self.challenges[status+1%3] {
+                if iter.id == challenge.id {
+                    self.challenges[
+                }
+            }
+            */
+            // main thread
+            self.tableView.reloadData()
+        })
         // TODO: Use observe correctly and remove observers when necessary
         ref.child("Users/\(uid)/Challenges").observe(FIRDataEventType.childAdded, with: { (snapshot: FIRDataSnapshot) in
-            //snapshot.value(forKey: <#T##String#>)
+            //snapshot.value(forKey: )
             // TODO: need challenge id from value?
             let dict: NSDictionary = snapshot.value as! NSDictionary
             var name: String = ""
-            // TODO: Figure out how to correctly handle childAdded getting called before status is set
-            // this could be a huge bug.
             var status: Int = 0
             var creator: Bool = true
             var opponent: String = ""
@@ -68,12 +117,6 @@ class HomeTableVC: UITableViewController {
             self.tableView.reloadData()
 
             
-            
-            for node in snapshot.children {
-                //var
-                //var challenge = Challenge()
-                print(node)
-            }
             })
     }
     

@@ -45,7 +45,7 @@ class AcceptChallenge: UIViewController {
         
         ref.child("Challenges").child(challengeId).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
             // Get user value
-            self.challenge = Challenge.initWith(snapshot: snapshot)
+            self.challenge = Challenge.initWith(snapshot: snapshot, id: challengeId)
             
         
             self.updateView()
@@ -90,15 +90,24 @@ class AcceptChallenge: UIViewController {
     }
     
 
-    
+    // TODO: disable button if forms are invalid
     @IBAction func acceptButton(_ sender: Any) {
-        //self.ref.child("Challenges/\(challenge!.name)/status").setValue(1)
-        //self.ref.child("Challenges/\(currChallenge!.name)/goal2").setValue(yourGoal.text!)
+        if let goal = self.yourGoal.text {
+            challenge.opponentGoal = goal
+        }
+        // TODO Replace with enum
+        let status = 1
+        challenge.status = status
+        challenge.saveToFirebase(ref: self.ref)
+        
+        self.ref.child("Users/\(challenge.opponentId!)/Challenges/\(challenge.id!)/status").setValue(status)
+        self.ref.child("Users/\(challenge.creatorId!)/Challenges/\(challenge.id!)/status").setValue(status)
         
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func rejectButton(_ sender: Any) {
+        // delete user, opponent, challenge
     }
     /*
     // MARK: - Navigation

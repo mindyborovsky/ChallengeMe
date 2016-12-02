@@ -43,14 +43,15 @@ struct Challenge {
     }
     
     
-    static func initWith(snapshot: FIRDataSnapshot) -> Challenge {
+    static func initWith(snapshot: FIRDataSnapshot, id: String) -> Challenge {
         var challenge = Challenge()
         let value = snapshot.value as? NSDictionary
+        challenge.id = id
         challenge.name  = value?["name"] as? String ?? ""
-        challenge.creatorId  = value?["creator"] as? String ?? ""
+        challenge.creatorId  = value?["creatorId"] as? String ?? ""
         challenge.creatorGoal  = value?["creatorGoal"] as? String ?? ""
         challenge.opponentGoal  = value?["opponentGoal"] as? String ?? ""
-        challenge.opponentId = value?["opponent"] as? String ?? ""
+        challenge.opponentId = value?["opponentId"] as? String ?? ""
         challenge.reward = value?["reward"] as? String ?? ""
         // TODO: This will throw errors
         challenge.status = value?["status"] as? Int ?? -1

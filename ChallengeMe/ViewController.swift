@@ -41,7 +41,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         
         ref = FIRDatabase.database().reference()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
