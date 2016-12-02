@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseDatabase
 
 struct UserChallenge {
     
@@ -19,4 +20,5 @@ struct UserChallenge {
     var opponent: String
     
     var id: String
+    
 }
