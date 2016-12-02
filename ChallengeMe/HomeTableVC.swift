@@ -58,25 +58,17 @@ class HomeTableVC: UITableViewController {
             
             
             let challenge = UserChallenge(creator: creator, name: name, status: status, opponent:opponent, id: id)
+            
+            // Remove the old challenge if it's still there
+            for i in 0..<3 {
+                for j in 0..<self.challenges[i].count {
+                    if self.challenges[i][j].id == challenge.id {
+                        self.challenges[i].remove(at: j)
+                    }
+                }
+            }
+            
             self.challenges[status].append(challenge)
-            /*
-            for i in 0..<self.challenges[status].count {
-                if self.challenges[status][i].id == challenge.id {
-                    self.challenges[status][i] = challenge
-                }
-            }
-            self.challenges[status].append(challenge)
-            for i in 0..3 {
-                self.challenges[i]
-                
-                }
-            }
-            for iter in self.challenges[status+1%3] {
-                if iter.id == challenge.id {
-                    self.challenges[
-                }
-            }
-            */
             // main thread
             self.tableView.reloadData()
         })

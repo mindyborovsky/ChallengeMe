@@ -108,6 +108,7 @@ class AcceptChallenge: UIViewController {
     
     @IBAction func rejectButton(_ sender: Any) {
         // delete user, opponent, challenge
+        // add child removed observer
     }
     /*
     // MARK: - Navigation
