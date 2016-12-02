@@ -22,6 +22,31 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     
     @IBOutlet weak var eventPic: UIImageView!
     
+    
+    // TODO: Clean this up
+    var name: String?
+    var email: String?
+    var opponent: User?
+    var photoURL: URL?
+    var uid: String?
+    
+    func getUserInfo() {
+        if let user = FIRAuth.auth()?.currentUser {
+            for profile in user.providerData {
+                
+                
+                self.name = profile.displayName
+                self.email = profile.email
+                self.photoURL = profile.photoURL
+                self.uid = profile.uid
+                
+            }
+            
+        } else {
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +55,8 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         ref = FIRDatabase.database().reference()
         
         self.title = "New Event"
+        
+        getUserInfo()
         
         // This is a temporary fix of just setting the image manually, needs to be DELETED later
         eventPic.image = UIImage(named: "running.jpg")
@@ -62,19 +89,35 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         // Replace "example challenge" with the challenge id
         // Replace "3" with whatever the event number is (discussed above)
         // Must add description and some type of link to the image in the database
-        self.ref.child("Challenges/\(currChallenge.id)/events/3/name").setValue("Sample Event!")
-        let storage = FIRStorage.storage()
-        let storageRef = storage.reference(forURL: "gs://challengeme-75fd5.appspot.com")
-        let spaceRef = storageRef.child("images/event.jpg")
-        let urlpath     = Bundle.main.path(forResource: "running", ofType: "jpg")
-        let localFile: NSURL = NSURL.fileURL(withPath: urlpath!) as NSURL;
         
-        // Upload the file to the path "folderName/file.jpg"
-        let uploadTask = spaceRef.putFile(localFile as URL, metadata: nil)
+        //
+        // PHOTO STUFF - adding to firebase storage
+        //
+//        let storage = FIRStorage.storage()
+//        let storageRef = storage.reference(forURL: "gs://challengeme-75fd5.appspot.com")
+//        let spaceRef = storageRef.child("images/event.jpg")
+//        let urlpath     = Bundle.main.path(forResource: "running", ofType: "jpg")
+//        let localFile: NSURL = NSURL.fileURL(withPath: urlpath!) as NSURL;
+//        
+//        // Upload the file to the path "folderName/file.jpg"
+//        let uploadTask = spaceRef.putFile(localFile as URL, metadata: nil)
+//        
+//        let observer = uploadTask.observe(.progress) { snapshot in
+//            print(snapshot.progress) // NSProgress object
+//        }
         
-        let observer = uploadTask.observe(.progress) { snapshot in
-            print(snapshot.progress) // NSProgress object
-        }
+        //
+        // WRITE TO FIREBASE
+        //
+        
+        var eventDict: Dictionary<String,Any> = ["id":""]
+        eventDict["id"] = currChallenge.events.count + 1
+        eventDict["description"] = eventDesc.text
+        eventDict["userId"] = self.uid
+        eventDict["imageLink"] = "this is a dummy link"
+        
+        self.ref.child("Challenges/\(currChallenge.id)/events/\(currChallenge.events.count + 1)").setValue(eventDict)
+        
         self.navigationController?.popViewController(animated: true)
     }
     /*
