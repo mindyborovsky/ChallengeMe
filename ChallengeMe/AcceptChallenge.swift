@@ -109,6 +109,14 @@ class AcceptChallenge: UIViewController {
     @IBAction func rejectButton(_ sender: Any) {
         // delete user, opponent, challenge
         // add child removed observer
+        let status = -1
+        challenge.status = status
+        challenge.saveToFirebase(ref: self.ref)
+        
+        self.ref.child("Users/\(challenge.opponentId!)/Challenges/\(challenge.id!)/status").setValue(status)
+        self.ref.child("Users/\(challenge.creatorId!)/Challenges/\(challenge.id!)/status").setValue(status)
+        
+        self.navigationController?.popViewController(animated: true)
     }
     /*
     // MARK: - Navigation

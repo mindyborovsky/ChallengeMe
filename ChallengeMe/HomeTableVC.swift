@@ -67,8 +67,10 @@ class HomeTableVC: UITableViewController {
                     }
                 }
             }
+            if (status != -1){
+                self.challenges[status].append(challenge)
+            }
             
-            self.challenges[status].append(challenge)
             // main thread
             self.tableView.reloadData()
         })
@@ -104,7 +106,9 @@ class HomeTableVC: UITableViewController {
             
             let challenge = UserChallenge(creator: creator, name: name, status: status, opponent:opponent, id: id)
             // this is gonna crash if status is not correct
-            self.challenges[status].append(challenge)
+            if (status != -1){
+                self.challenges[status].append(challenge)
+            }
             // main thread
             self.tableView.reloadData()
 
