@@ -50,7 +50,7 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
     }
 
     func updateView() {
-        print("Here")
+
 //        currChallenge.name = userChallenge?.name
         
         navTitle.title = currChallenge.name
