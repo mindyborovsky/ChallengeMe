@@ -78,12 +78,23 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
 
     
     @IBAction func takePic(_ sender: Any) {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.sourceType = .camera
-        present(picker, animated: true, completion: nil)
+//        let picker = UIImagePickerController()
+//        picker.delegate = self
+//        picker.sourceType = .camera
+//        present(picker, animated: true, completion: nil)
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
     }
     
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        eventPic.image = image
+        self.dismiss(animated: true, completion: nil);
+    }
     
     @IBAction func eventSubmit(_ sender: Any) {
         // Replace "example challenge" with the challenge id
@@ -93,15 +104,34 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         //
         // PHOTO STUFF - adding to firebase storage
         //
-//        let storage = FIRStorage.storage()
-//        let storageRef = storage.reference(forURL: "gs://challengeme-75fd5.appspot.com")
-//        let spaceRef = storageRef.child("images/event.jpg")
+        var downloadURL: String = ""
+        let storage = FIRStorage.storage()
+        let storageRef = storage.reference(forURL: "gs://challengeme-75fd5.appspot.com")
+        let spaceRef = storageRef.child("\(currChallenge.id!)/\(currChallenge.events.count + 1).jpg")
 //        let urlpath     = Bundle.main.path(forResource: "running", ofType: "jpg")
 //        let localFile: NSURL = NSURL.fileURL(withPath: urlpath!) as NSURL;
-//        
-//        // Upload the file to the path "folderName/file.jpg"
-//        let uploadTask = spaceRef.putFile(localFile as URL, metadata: nil)
-//        
+        var data = NSData()
+        data = UIImageJPEGRepresentation(eventPic.image!, 0.8)! as NSData
+        
+        let metaData = FIRStorageMetadata()
+        
+        metaData.contentType = "image/jpg"
+        
+        spaceRef.put(data as Data, metadata: metaData){(metaData,error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }else{
+                //store downloadURL
+                downloadURL = metaData!.downloadURL()!.absoluteString
+                //store downloadURL at database
+//                self.databaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).updateChildValues(["userPhoto": downloadURL])
+            }
+            
+        }
+        // Upload the file to the path "folderName/file.jpg"
+//        let uploadTask = spaceRef.putFile(photoURL as URL, metadata: nil)
+//
 //        let observer = uploadTask.observe(.progress) { snapshot in
 //            print(snapshot.progress) // NSProgress object
 //        }
@@ -114,7 +144,7 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         eventDict["id"] = currChallenge.events.count + 1
         eventDict["description"] = eventDesc.text
         eventDict["userId"] = self.uid
-        eventDict["imageLink"] = "this is a dummy link"
+        eventDict["imageLink"] = downloadURL
         
         self.ref.child("Challenges/\(currChallenge.id!)/events/\(currChallenge.events.count + 1)").setValue(eventDict)
         
