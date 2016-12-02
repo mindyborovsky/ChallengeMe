@@ -22,6 +22,7 @@ class AcceptChallenge: UIViewController {
     @IBOutlet weak var onTheLine: UILabel!
     
     @IBOutlet weak var yourGoal: UITextField!
+    @IBOutlet weak var durationLabel: UILabel!
     
     var userChallenge: UserChallenge?
     
@@ -82,6 +83,7 @@ class AcceptChallenge: UIViewController {
         creatorGoal.text = (challengerName) + "'s goal is to " + (challenge.creatorGoal)!
         }
         onTheLine.text = challenge.reward
+        durationLabel.text = "First to \(challenge.duration!) wins!"
     }
 
     override func didReceiveMemoryWarning() {
