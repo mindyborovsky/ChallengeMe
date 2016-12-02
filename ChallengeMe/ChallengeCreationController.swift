@@ -20,6 +20,7 @@ class ChallengeCreationController: UIViewController {
     @IBOutlet weak var challengeNameField: UITextField!
     @IBOutlet weak var challengeGoalField: UITextField!
     @IBOutlet weak var onTheLineField: UITextField!
+    @IBOutlet weak var durationTextField: UITextField!
     
     // TODO: Clean this up
     var name: String?
@@ -51,6 +52,8 @@ class ChallengeCreationController: UIViewController {
         ref = FIRDatabase.database().reference()
         // TODO: explicitly calling this is not great
         getUserInfo()
+        
+        durationTextField.keyboardType = UIKeyboardType.phonePad
         
         // Do any additional setup after loading the view.
     }
@@ -95,6 +98,14 @@ class ChallengeCreationController: UIViewController {
             }
             if let reward = onTheLineField.text {
                 newChallenge.reward = reward
+            }
+            if let durationString = durationTextField.text {
+                if let duration = Int(durationString) {
+                newChallenge.duration = duration
+                } else {
+                    // error constructing int
+                    print(durationString)
+                }
             }
             if let opponent = self.opponent {
                 newChallenge.opponentId = opponent.uid

@@ -33,6 +33,8 @@ struct Challenge {
     
     var events: Array<Event> = []
     
+    var duration: Int?
+    
     // TODO: Replace with enum ChallengeStatus
     var status: Int?
     
@@ -59,6 +61,7 @@ struct Challenge {
         print(hey)
         // TODO: This will throw errors
         challenge.status = value?["status"] as? Int ?? -1
+        challenge.duration = value?["duration"] as? Int ?? -1
         return challenge
     }
     
@@ -71,6 +74,7 @@ struct Challenge {
         dict["opponentGoal"] = self.opponentGoal ?? ""
         dict["reward"] = self.reward!
         dict["status"] = self.status!
+        dict["duration"] = self.duration!
         return dict
     }
     
