@@ -60,13 +60,15 @@ class HomeTableVC: UITableViewController {
             let challenge = UserChallenge(creator: creator, name: name, status: status, opponent:opponent, id: id)
             
             // Remove the old challenge if it's still there
+            var indexToRemove = (-1,-1)
             for i in 0..<3 {
                 for j in 0..<self.challenges[i].count {
                     if self.challenges[i][j].id == challenge.id {
-                        self.challenges[i].remove(at: j)
+                        indexToRemove = (i,j)
                     }
                 }
             }
+            self.challenges[indexToRemove.0].remove(at:indexToRemove.1)
             if (status != -1){
                 self.challenges[status].append(challenge)
             }
