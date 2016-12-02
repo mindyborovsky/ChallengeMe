@@ -141,12 +141,15 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         //
         
         var eventDict: Dictionary<String,Any> = ["id":""]
-        eventDict["id"] = currChallenge.events.count + 1
+        // events.count will iterate the id by one every time starting at 0
+        eventDict["id"] = currChallenge.events.count
         eventDict["description"] = eventDesc.text
         eventDict["userId"] = self.uid
         eventDict["imageLink"] = downloadURL
         
-        self.ref.child("Challenges/\(currChallenge.id!)/events/\(currChallenge.events.count + 1)").setValue(eventDict)
+        self.ref.child("Challenges/\(currChallenge.id!)/events/\(currChallenge.events.count)").setValue(eventDict)
+        
+        self.ref.child("Challenges/\(currChallenge.id!)/events/count").setValue(currChallenge.events.count+1)
         
         self.navigationController?.popViewController(animated: true)
     }

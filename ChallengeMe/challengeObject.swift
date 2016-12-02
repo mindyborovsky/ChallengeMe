@@ -56,9 +56,19 @@ struct Challenge {
         challenge.opponentId = value?["opponentId"] as? String ?? ""
         challenge.reward = value?["reward"] as? String ?? ""
         // TODO: Figure out all of this janky events array stuff
-        var hey = value?["events"] as? NSDictionary
+        var events = value?["events"] as? NSDictionary
+        for key in (events?.allKeys) ?? [] {
+            if key as? String != "count" {
+                let val = events?[key]
+            let eventDict = val as? NSDictionary
+            print(eventDict)
+            
+            let event = Event.initWith(dictionary: eventDict as! Dictionary<String, Any>)
+            challenge.events.append(event)
+            }
+
+        }
         print("this should be the challenges array")
-        print(hey)
         // TODO: This will throw errors
         challenge.status = value?["status"] as? Int ?? -1
         challenge.duration = value?["duration"] as? Int ?? -1
@@ -75,6 +85,15 @@ struct Challenge {
         dict["reward"] = self.reward!
         dict["status"] = self.status!
         dict["duration"] = self.duration!
+        var eventsObject: Optional<Dictionary<String,Any>>
+        for i in 0..<self.events.count {
+            if eventsObject == nil {
+                eventsObject = ["0":""]
+            }
+            let eventDict = self.events[i].toDictionary()
+            eventsObject!.updateValue(eventDict, forKey: String(i))
+        }
+        
         return dict
     }
     
