@@ -56,30 +56,22 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     
     
     @IBAction func eventSubmit(_ sender: Any) {
+        // Replace "example challenge" with the challenge id
+        // Replace "3" with whatever the event number is (discussed above)
+        // Must add description and some type of link to the image in the database
+        self.ref.child("Challenges/example challenge/events/3/name").setValue("Sample Event!")
+        let storage = FIRStorage.storage()
+        let storageRef = storage.reference(forURL: "gs://challengeme-75fd5.appspot.com")
+        let spaceRef = storageRef.child("images/event.jpg")
+        let urlpath     = Bundle.main.path(forResource: "running", ofType: "jpg")
+        let localFile: NSURL = NSURL.fileURL(withPath: urlpath!) as NSURL;
         
-//        self.ref.child("Challenges/example challenge/events/3/name").setValue("Sample Event!")
-//        let storage = FIRStorage.storage()
-//        let storageRef = storage.reference(forURL: "gs://challengeme-75fd5.appspot.com")
-//        let spaceRef = storageRef.child("images/space.jpg")
-//        //let urlpath     = Bundle.main.path(forResource: "running", ofType: "jpg")
-//        //let localFile: NSURL = NSURL.fileURL(withPath: urlpath!) as NSURL;
-//        let imageURL = info[UIImagePickerControllerReferenceURL] as NSURL
-//        let imageName = imageURL.path!.lastPathComponent
-//        let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! as String
-//        let localPath = documentDirectory.stringByAppendingPathComponent(imageName)
-//        
-//        let image = info[UIImagePickerControllerOriginalImage] as UIImage
-//        let data = UIImagePNGRepresentation(image)
-//        data.writeToFile(localPath, atomically: true)
-//        
-//        let imageData = NSData(contentsOfFile: localPath)!
-//        let photoURL = NSURL(fileURLWithPath: localPath)
-//        // Upload the file to the path "folderName/file.jpg"
-//        let uploadTask = spaceRef.putFile(photoURL as URL, metadata: nil)
-//        
-//        let observer = uploadTask.observe(.progress) { snapshot in
-//            print(snapshot.progress) // NSProgress object
-//        }
+        // Upload the file to the path "folderName/file.jpg"
+        let uploadTask = spaceRef.putFile(localFile as URL, metadata: nil)
+        
+        let observer = uploadTask.observe(.progress) { snapshot in
+            print(snapshot.progress) // NSProgress object
+        }
         self.navigationController?.popViewController(animated: true)
     }
     /*
