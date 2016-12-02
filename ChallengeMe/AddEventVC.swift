@@ -16,6 +16,7 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     
     var ref: FIRDatabaseReference!
     
+    var currChallenge = Challenge()
     
     @IBOutlet weak var eventDesc: UITextField!
     
@@ -27,6 +28,8 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         // Do any additional setup after loading the view.
         
         ref = FIRDatabase.database().reference()
+        
+        self.title = "New Event"
         
         // This is a temporary fix of just setting the image manually, needs to be DELETED later
         eventPic.image = UIImage(named: "running.jpg")
@@ -59,7 +62,7 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         // Replace "example challenge" with the challenge id
         // Replace "3" with whatever the event number is (discussed above)
         // Must add description and some type of link to the image in the database
-        self.ref.child("Challenges/example challenge/events/3/name").setValue("Sample Event!")
+        self.ref.child("Challenges/\(currChallenge.id)/events/3/name").setValue("Sample Event!")
         let storage = FIRStorage.storage()
         let storageRef = storage.reference(forURL: "gs://challengeme-75fd5.appspot.com")
         let spaceRef = storageRef.child("images/event.jpg")

@@ -31,6 +31,8 @@ struct Challenge {
     
     var reward: String?
     
+    var events: Array<Event>?
+    
     // TODO: Replace with enum ChallengeStatus
     var status: Int?
     

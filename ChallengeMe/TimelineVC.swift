@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseDatabase
+import FirebaseAuth
 
 class TimelineVC: UIViewController, UIScrollViewDelegate {
     
+    var ref: FIRDatabaseReference!
     
     var currChallenge = Challenge()
     var userChallenge: UserChallenge?
@@ -29,12 +33,30 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
 
         // Do any additional setup after loading the view.
 
-        currChallenge.name = userChallenge?.name
+        ref = FIRDatabase.database().reference()
+        
+        ref.child("Challenges").child((userChallenge?.id)!).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+            // Get user value
+            self.currChallenge = Challenge.initWith(snapshot: snapshot)
+            
+            
+            self.updateView()
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        
+    }
+
+    func updateView() {
+        print("Here")
+//        currChallenge.name = userChallenge?.name
         
         navTitle.title = currChallenge.name
-
+        
         self.title = currChallenge.name
-        print(currChallenge.status)
+
         let theFrame = CGRect(x:0, y:0, width: self.view.frame.width, height: self.view.frame.height)
         
         let scrollView = UIScrollView(frame: theFrame)
@@ -51,7 +73,7 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
         let bigFrame = CGRect(x:0, y:0, width: self.view.frame.width, height: 1000)
         let tlView = UIView(frame: bigFrame)
         tlView.backgroundColor = UIColor(red:0.50, green:0.55, blue:0.55, alpha:1.0)
-    
+        
         
         let path = UIBezierPath();
         path.move(to: CGPoint(x: self.view.frame.width/2, y: 0))
@@ -92,7 +114,7 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
             eventButton.layer.borderWidth = 3.0
             eventButton.layer.borderColor = UIColor.black.cgColor
             eventButton.layer.backgroundColor = UIColor.black.cgColor
-//          May want to se the eventButton tag to some type of id of the event
+            //          May want to se the eventButton tag to some type of id of the event
             eventButton.addTarget(self, action: #selector(eventButtonClick), for: UIControlEvents.touchUpInside)
             tlView.addSubview(eventButton)
         }
@@ -112,14 +134,14 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
         else {
             let addButton = UIButton(type: .custom)
             addButton.frame = CGRect(x: ((self.view.frame.width/2)-150), y: (bigFrame.height*(7/8)), width: 300, height: 50)
-//            addButton.layer.cornerRadius = 0.5*addButton.bounds.size.width
+            //            addButton.layer.cornerRadius = 0.5*addButton.bounds.size.width
             addButton.layer.borderColor = UIColor.black.cgColor
             addButton.layer.borderWidth = 3.0
             addButton.clipsToBounds = true
             addButton.setTitle("Completed!", for: .normal)
-//            addButton.setImage(UIImage(named:"plus.png"), for: .normal)
-//            addButton.tag = 5
-//            addButton.addTarget(self, action: #selector(addButtonClick), for: UIControlEvents.touchUpInside)
+            //            addButton.setImage(UIImage(named:"plus.png"), for: .normal)
+            //            addButton.tag = 5
+            //            addButton.addTarget(self, action: #selector(addButtonClick), for: UIControlEvents.touchUpInside)
             tlView.addSubview(addButton)
         }
         
@@ -127,7 +149,7 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(tlView)
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: 1000)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -150,6 +172,8 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
             // Things we will need here:
             // Figure out how many events have already been created (we already have to do this above to generate the timeline) and then set a variable in AddEventVC that indicates how many events already exist. We will then set the "id" of the event to one more than the number of events that exist (think about if we are going to index at 0 or 1).
             // I'm not sure if we will have to set this or if we can just get this value by virtue of being logged in, but we need to know the logged in User's ID so that we can associate the event with the proper user.
+            let vc = segue.destination as! AddEventVC
+            vc.currChallenge = currChallenge
         }
     }
     /*
