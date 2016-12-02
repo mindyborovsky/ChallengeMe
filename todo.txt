@@ -1,5 +1,12 @@
-firebase/cocoapods stuff on daniels computer
-bridging header for ObjC fb sdk
-set up fb auth
+Accept challenges
+Create events
+show events
+upload pictures
+challenge termination
+stats view
+UI
+async the db calls
+clean up directory structure
+fix todos
+fix quickly pressing log out bug
 
-https://developers.facebook.com/apps/1757596827824382/fb-login/quickstart/

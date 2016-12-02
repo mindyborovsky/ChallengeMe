@@ -17,10 +17,10 @@ class HomeTableVC: UITableViewController {
     //
     //        return challenges
     //    }
-    var challenges: [[Challenge]] = [[], [], []]
+    var challenges: [[UserChallenge]] = [[], [], []]
     let ref: FIRDatabaseReference = FIRDatabase.database().reference()
     
-    var selectedChallenge: Challenge?
+    var selectedChallenge: UserChallenge?
     
     let sectionTitles = ["Pending Challenges", "Current Challenges", "Past Challenges"]
     
@@ -39,6 +39,8 @@ class HomeTableVC: UITableViewController {
             // this could be a huge bug.
             var status: Int = 0
             var creator: Bool = true
+            var opponent: String = ""
+            var id: String = ""
             if let nameVal = dict.value(forKey: "name") {
                 name = nameVal as! String
             }
@@ -51,9 +53,15 @@ class HomeTableVC: UITableViewController {
                 print(creatorBool as! Bool)
                 print(creator)
             }
+            if let opponentString = dict.value(forKey:"opponent") {
+                opponent = opponentString as! String
+            }
+            if let idString = dict.value(forKey:"id") {
+                id = idString as! String
+            }
             
             
-            let challenge = Challenge(name: name, opponent: "", creator: creator, goal: "", goal2: "", reward: "", status: status)
+            let challenge = UserChallenge(creator: creator, name: name, status: status, opponent:opponent, id: id)
             // this is gonna crash if status is not correct
             self.challenges[status].append(challenge)
             // main thread
@@ -206,7 +214,11 @@ class HomeTableVC: UITableViewController {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination.isKind(of: TimelineVC.self) {
             let vc = segue.destination as! TimelineVC
-            vc.currChallenge = selectedChallenge!
+            vc.userChallenge = selectedChallenge!
+        }
+        if segue.destination.isKind(of: AcceptChallenge.self){
+            let vc = segue.destination as! AcceptChallenge
+            vc.userChallenge = selectedChallenge
         }
      }
  

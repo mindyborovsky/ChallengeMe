@@ -23,6 +23,8 @@
 		5038432B1DD3E19B009E3DF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5038432A1DD3E19B009E3DF7 /* Assets.xcassets */; };
 		5038432E1DD3E19B009E3DF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5038432C1DD3E19B009E3DF7 /* LaunchScreen.storyboard */; };
 		503843381DD3E64A009E3DF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 503843371DD3E64A009E3DF7 /* GoogleService-Info.plist */; };
+		50386BB31DEF42480024126E /* userChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50386BB21DEF42480024126E /* userChallenge.swift */; };
+		50386BB51DEF4B550024126E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50386BB41DEF4B550024126E /* String.swift */; };
 		50393E4D1DD3F5F300634411 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50393E4C1DD3F5F300634411 /* FBSDKLoginKit.framework */; };
 		50A8C0C91DDA3A5800A5A553 /* HomeTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A8C0C81DDA3A5800A5A553 /* HomeTableVC.swift */; };
 		50F8ABA81DDF6F9D005A4D13 /* FindFriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F8ABA71DDF6F9D005A4D13 /* FindFriendsController.swift */; };
@@ -49,6 +51,8 @@
 		5038432D1DD3E19B009E3DF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5038432F1DD3E19B009E3DF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503843371DD3E64A009E3DF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		50386BB21DEF42480024126E /* userChallenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userChallenge.swift; sourceTree = "<group>"; };
+		50386BB41DEF4B550024126E /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		50393E4C1DD3F5F300634411 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		50439E591DDB808100483331 /* ChallengeMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChallengeMe.entitlements; sourceTree = "<group>"; };
 		50A8C0C81DDA3A5800A5A553 /* HomeTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableVC.swift; sourceTree = "<group>"; };
@@ -116,7 +120,10 @@
 				5010368F1DDCDEB000068403 /* User.swift */,
 				50A8C0C81DDA3A5800A5A553 /* HomeTableVC.swift */,
 				5010368D1DDCD89F00068403 /* challengeObject.swift */,
+				50386BB41DEF4B550024126E /* String.swift */,
+				50386BB21DEF42480024126E /* userChallenge.swift */,
 				5010368B1DDCD89400068403 /* ChallengeCreationController.swift */,
+				211D71691DE2480200C5F0F0 /* AcceptChallenge.swift */,
 				50F8ABA71DDF6F9D005A4D13 /* FindFriendsController.swift */,
 				5038432A1DD3E19B009E3DF7 /* Assets.xcassets */,
 				5038432C1DD3E19B009E3DF7 /* LaunchScreen.storyboard */,
@@ -267,6 +274,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50386BB31DEF42480024126E /* userChallenge.swift in Sources */,
+				50386BB51DEF4B550024126E /* String.swift in Sources */,
 				211D71661DDE201A00C5F0F0 /* TimelineVC.swift in Sources */,
 				5010368C1DDCD89400068403 /* ChallengeCreationController.swift in Sources */,
 				5010368E1DDCD89F00068403 /* challengeObject.swift in Sources */,

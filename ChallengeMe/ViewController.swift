@@ -70,6 +70,14 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 // handle error
                 if let result = user {
                     print(result)
+                    for profile in result.providerData {
+                        
+                        let name = profile.displayName
+                        let uid = profile.uid
+                        //TODO: Is this bad?
+                        self.ref.child("Users/\(uid)/Name").setValue(name)
+                        
+                    }
                     self.performSegue(withIdentifier: "homeSegue", sender: self)
                 }
                 if let err = error {
@@ -99,6 +107,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 let email = profile.email
                 let photoURL = profile.photoURL
                 let uid = profile.uid
+                //TODO: Is this bad?
+                self.ref.child("Users/\(uid)/Name").setValue(name)
                 
             }
             
