@@ -116,7 +116,7 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         eventDict["userId"] = self.uid
         eventDict["imageLink"] = "this is a dummy link"
         
-        self.ref.child("Challenges/\(currChallenge.id)/events/\(currChallenge.events.count + 1)").setValue(eventDict)
+        self.ref.child("Challenges/\(currChallenge.id!)/events/\(currChallenge.events.count + 1)").setValue(eventDict)
         
         self.navigationController?.popViewController(animated: true)
     }

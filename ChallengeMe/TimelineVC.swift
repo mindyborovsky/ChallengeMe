@@ -37,7 +37,7 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
         
         ref.child("Challenges").child((userChallenge?.id)!).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
             // Get user value
-            self.currChallenge = Challenge.initWith(snapshot: snapshot)
+            self.currChallenge = Challenge.initWith(snapshot: snapshot, id: (self.userChallenge?.id)!)
             
             
             self.updateView()

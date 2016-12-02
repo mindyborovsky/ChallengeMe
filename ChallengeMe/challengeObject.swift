@@ -53,6 +53,8 @@ struct Challenge {
         challenge.opponentGoal  = value?["opponentGoal"] as? String ?? ""
         challenge.opponentId = value?["opponentId"] as? String ?? ""
         challenge.reward = value?["reward"] as? String ?? ""
+        // TODO: Figure out all of this janky events array stuff
+        challenge.events = value?["events"] as? Array<Event> ?? []
         // TODO: This will throw errors
         challenge.status = value?["status"] as? Int ?? -1
         return challenge
