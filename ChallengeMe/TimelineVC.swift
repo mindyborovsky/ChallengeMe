@@ -34,9 +34,11 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
         // Do any additional setup after loading the view.
 
         ref = FIRDatabase.database().reference()
+
         
-        ref.child("Challenges").child((userChallenge?.id)!).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
-            // Get user value
+        // set up the observer for added events
+        ref.child("Challenges").child((userChallenge?.id)!).observe(FIRDataEventType.value, with: { (snapshot: FIRDataSnapshot) in
+
             self.currChallenge = Challenge.initWith(snapshot: snapshot, id: (self.userChallenge?.id)!)
             
             
@@ -45,7 +47,6 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
         }) { (error) in
             print(error.localizedDescription)
         }
-        
         
     }
 

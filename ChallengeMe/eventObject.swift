@@ -26,8 +26,8 @@ struct Event {
     static func initWith(dictionary: Dictionary<String,Any>) -> Event {
         var event = Event()
         // leave this wizardry alone
-        let id = dictionary["id"] as? Int ?? -1
-        event.id = String(id)
+        
+        event.id = dictionary["id"] as? String ?? "error parsing id"
         event.description = dictionary["description"] as? String ?? ""
         event.userId = dictionary["userId"] as? String ?? ""
         event.imageLink = dictionary["imageLink"] as? String ?? ""

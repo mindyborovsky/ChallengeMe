@@ -101,13 +101,15 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         // Replace "3" with whatever the event number is (discussed above)
         // Must add description and some type of link to the image in the database
         
+        let nextEventIndex = currChallenge.events.count
+        
         //
         // PHOTO STUFF - adding to firebase storage
         //
         var downloadURL: String = ""
         let storage = FIRStorage.storage()
         let storageRef = storage.reference(forURL: "gs://challengeme-75fd5.appspot.com")
-        let spaceRef = storageRef.child("\(currChallenge.id!)/\(currChallenge.events.count + 1).jpg")
+        let spaceRef = storageRef.child("\(currChallenge.id!)/\(nextEventIndex).jpg")
 //        let urlpath     = Bundle.main.path(forResource: "running", ofType: "jpg")
 //        let localFile: NSURL = NSURL.fileURL(withPath: urlpath!) as NSURL;
         var data = NSData()
@@ -139,17 +141,19 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         //
         // WRITE TO FIREBASE
         //
-        
-        var eventDict: Dictionary<String,Any> = ["id":""]
-        // events.count will iterate the id by one every time starting at 0
-        eventDict["id"] = currChallenge.events.count
-        eventDict["description"] = eventDesc.text
-        eventDict["userId"] = self.uid
-        eventDict["imageLink"] = downloadURL
-        
+        var newEvent = Event()
+       
+        newEvent.id = String(nextEventIndex)
+        newEvent.description = eventDesc.text
+        newEvent.userId = self.uid
+        newEvent.imageLink = downloadURL
+        let eventDict = newEvent.toDictionary()
         self.ref.child("Challenges/\(currChallenge.id!)/events/\(currChallenge.events.count)").setValue(eventDict)
         
-        self.ref.child("Challenges/\(currChallenge.id!)/events/count").setValue(currChallenge.events.count+1)
+
+        currChallenge.events.append(newEvent)
+        
+        self.ref.child("Challenges/\(currChallenge.id!)/events/count").setValue(currChallenge.events.count)
         
         self.navigationController?.popViewController(animated: true)
     }

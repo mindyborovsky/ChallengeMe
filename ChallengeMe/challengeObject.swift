@@ -57,16 +57,20 @@ struct Challenge {
         challenge.reward = value?["reward"] as? String ?? ""
         // TODO: Figure out all of this janky events array stuff
         var events = value?["events"] as? NSDictionary
-        for key in (events?.allKeys) ?? [] {
-            if key as? String != "count" {
-                let val = events?[key]
+        if let count = events?["count"] as? Int {
+            
+        
+        for i in 0..<count {
+           
+            let val = events?[String(i)]
             let eventDict = val as? NSDictionary
             print(eventDict)
             
             let event = Event.initWith(dictionary: eventDict as! Dictionary<String, Any>)
             challenge.events.append(event)
-            }
+            
 
+        }
         }
         print("this should be the challenges array")
         // TODO: This will throw errors
