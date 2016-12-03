@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7ra-bf-8zM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7ra-bf-8zM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q3m-U9-Df4" id="ffR-dY-0HM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -178,7 +179,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dCM-Pb-Glq" id="atW-dN-Oet">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -470,10 +471,10 @@
             </objects>
             <point key="canvasLocation" x="5677.6000000000004" y="1234.6326836581711"/>
         </scene>
-        <!--View Controller-->
+        <!--Stats View Controller-->
         <scene sceneID="4SK-qV-65s">
             <objects>
-                <viewController id="GV0-6P-oZJ" sceneMemberID="viewController">
+                <viewController id="GV0-6P-oZJ" customClass="StatsViewController" customModule="ChallengeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lkQ-oU-GFH"/>
                         <viewControllerLayoutGuide type="bottom" id="Q01-Bt-tZR"/>
@@ -481,9 +482,68 @@
                     <view key="view" contentMode="scaleToFill" id="oDw-Cm-sMz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Statistics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GX0-y2-Jxo">
+                                <rect key="frame" x="102" y="72" width="170" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TcO-6s-ZFd">
+                                <rect key="frame" x="87" y="116" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="TcO-6s-ZFd" secondAttribute="height" multiplier="1:1" id="hIl-89-PjJ"/>
+                                    <constraint firstAttribute="width" constant="200" id="kMD-Pb-cfq"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AFV-Yg-rpo">
+                                <rect key="frame" x="16" y="324" width="343" height="286"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSV-Zf-Obt">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="95.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yOb-EU-yXJ">
+                                        <rect key="frame" x="0.0" y="95.5" width="343" height="95.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWo-qF-7Zl">
+                                        <rect key="frame" x="0.0" y="191" width="343" height="95"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="GWo-qF-7Zl" firstAttribute="height" secondItem="yOb-EU-yXJ" secondAttribute="height" id="Shy-hO-NiR"/>
+                                    <constraint firstItem="XSV-Zf-Obt" firstAttribute="height" secondItem="yOb-EU-yXJ" secondAttribute="height" id="nV4-l6-LdR"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TcO-6s-ZFd" firstAttribute="centerX" secondItem="GX0-y2-Jxo" secondAttribute="centerX" id="K61-jx-lg9"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="AFV-Yg-rpo" secondAttribute="leading" id="TvL-R8-Rf9"/>
+                            <constraint firstItem="AFV-Yg-rpo" firstAttribute="top" secondItem="TcO-6s-ZFd" secondAttribute="bottom" constant="8" id="ZE5-XV-DSl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AFV-Yg-rpo" secondAttribute="trailing" id="a1C-XQ-Dco"/>
+                            <constraint firstItem="GX0-y2-Jxo" firstAttribute="centerX" secondItem="oDw-Cm-sMz" secondAttribute="centerX" id="bKe-1W-yJK"/>
+                            <constraint firstItem="TcO-6s-ZFd" firstAttribute="top" secondItem="GX0-y2-Jxo" secondAttribute="bottom" constant="8" id="beL-BI-F5I"/>
+                            <constraint firstItem="Q01-Bt-tZR" firstAttribute="top" secondItem="AFV-Yg-rpo" secondAttribute="bottom" constant="8" id="cf7-O3-sLi"/>
+                            <constraint firstItem="GX0-y2-Jxo" firstAttribute="top" secondItem="lkQ-oU-GFH" secondAttribute="bottom" constant="8" id="yXc-FD-xh7"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sMX-SD-Ksl"/>
+                    <connections>
+                        <outlet property="challegesCompleted" destination="GWo-qF-7Zl" id="PgV-RM-prM"/>
+                        <outlet property="challengesWonLabel" destination="yOb-EU-yXJ" id="TEH-R3-E4b"/>
+                        <outlet property="imageView" destination="TcO-6s-ZFd" id="ymb-N9-kGP"/>
+                        <outlet property="titleLabel" destination="GX0-y2-Jxo" id="AQY-qo-zIr"/>
+                        <outlet property="winPercentageLabel" destination="XSV-Zf-Obt" id="kn5-Q3-kYd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gM1-ql-uQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
