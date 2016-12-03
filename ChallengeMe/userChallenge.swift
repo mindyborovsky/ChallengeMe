@@ -44,4 +44,11 @@ struct UserChallenge {
         return UserChallenge(creator: creator, name: challenge.name!, status: challenge.status!, opponent: opponent!, id: challenge.id!)
         
     }
+    /*
+    static func initWith(dictionary: NSDictionary) -> UserChallenge {
+      var userChallenge = UserChallenge()
+    
+      return userChallenge
+    )
+ */
 }

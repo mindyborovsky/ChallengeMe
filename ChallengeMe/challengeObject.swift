@@ -139,7 +139,5 @@ struct Challenge {
         opponentChallenge.saveToFirebase(ref: ref, uid: self.opponentId!)
         self.saveToFirebase(ref: ref)
         
-        // Increment ref
-        ref.child("Usrs/")
     }
 }
