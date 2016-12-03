@@ -297,11 +297,12 @@
                         <viewControllerLayoutGuide type="top" id="T3k-NE-2Ry"/>
                         <viewControllerLayoutGuide type="bottom" id="tUv-Z3-jhn"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="39H-oP-THn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="39H-oP-THn">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
                     <connections>
                         <segue destination="WFC-UF-BFU" kind="show" identifier="timelineToCreateEvent" id="ism-ll-tB2"/>
