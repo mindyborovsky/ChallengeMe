@@ -23,6 +23,7 @@ class FindFriendsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         if let user = FIRAuth.auth()?.currentUser {
             // TODO: Multiple profiles?
             for profile in user.providerData {

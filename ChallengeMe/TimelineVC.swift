@@ -56,6 +56,8 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
         // Do any additional setup after loading the view.
 
         ref = FIRDatabase.database().reference()
@@ -227,6 +229,10 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
             // Figure out how many events have already been created (we already have to do this above to generate the timeline) and then set a variable in AddEventVC that indicates how many events already exist. We will then set the "id" of the event to one more than the number of events that exist (think about if we are going to index at 0 or 1).
             // I'm not sure if we will have to set this or if we can just get this value by virtue of being logged in, but we need to know the logged in User's ID so that we can associate the event with the proper user.
             let vc = segue.destination as! AddEventVC
+            vc.currChallenge = currChallenge
+        }
+        if segue.destination.isKind(of: ChallengeInfoVC.self) {
+            let vc = segue.destination as! ChallengeInfoVC
             vc.currChallenge = currChallenge
         }
     }

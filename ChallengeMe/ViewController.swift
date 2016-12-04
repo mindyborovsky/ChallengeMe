@@ -22,6 +22,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         // TODO: Remove this logout
         FBSDKLoginManager().logOut()
         // Do any additional setup after loading the view, typically from a nib.

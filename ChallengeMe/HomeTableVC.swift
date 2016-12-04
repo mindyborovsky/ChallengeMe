@@ -123,6 +123,7 @@ class HomeTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // TODO: this sucks
         if let user = FIRAuth.auth()?.currentUser {
             // TODO: Multiple profiles?

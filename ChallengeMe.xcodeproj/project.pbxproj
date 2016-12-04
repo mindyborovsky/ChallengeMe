@@ -15,6 +15,7 @@
 		211D71701DF0810900C5F0F0 /* AddEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211D716F1DF0810900C5F0F0 /* AddEventVC.swift */; };
 		211D71721DF08A7000C5F0F0 /* running.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 211D71711DF08A7000C5F0F0 /* running.jpg */; };
 		211D71741DF0FD9800C5F0F0 /* eventObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211D71731DF0FD9800C5F0F0 /* eventObject.swift */; };
+		211D71781DF3917300C5F0F0 /* ChallengeInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211D71771DF3917300C5F0F0 /* ChallengeInfoVC.swift */; };
 		5010368C1DDCD89400068403 /* ChallengeCreationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010368B1DDCD89400068403 /* ChallengeCreationController.swift */; };
 		5010368E1DDCD89F00068403 /* challengeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010368D1DDCD89F00068403 /* challengeObject.swift */; };
 		501036901DDCDEB000068403 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010368F1DDCDEB000068403 /* User.swift */; };
@@ -41,6 +42,7 @@
 		211D716F1DF0810900C5F0F0 /* AddEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventVC.swift; sourceTree = "<group>"; };
 		211D71711DF08A7000C5F0F0 /* running.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = running.jpg; sourceTree = "<group>"; };
 		211D71731DF0FD9800C5F0F0 /* eventObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventObject.swift; sourceTree = "<group>"; };
+		211D71771DF3917300C5F0F0 /* ChallengeInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeInfoVC.swift; sourceTree = "<group>"; };
 		39791405F571C8EE47A45BAB /* Pods-ChallengeMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChallengeMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChallengeMe/Pods-ChallengeMe.release.xcconfig"; sourceTree = "<group>"; };
 		5010368B1DDCD89400068403 /* ChallengeCreationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCreationController.swift; sourceTree = "<group>"; };
 		5010368D1DDCD89F00068403 /* challengeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = challengeObject.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				503843231DD3E19B009E3DF7 /* AppDelegate.swift */,
 				503843251DD3E19B009E3DF7 /* ViewController.swift */,
 				503843271DD3E19B009E3DF7 /* Main.storyboard */,
+				211D71771DF3917300C5F0F0 /* ChallengeInfoVC.swift */,
 				5010368F1DDCDEB000068403 /* User.swift */,
 				50A8C0C81DDA3A5800A5A553 /* HomeTableVC.swift */,
 				5010368D1DDCD89F00068403 /* challengeObject.swift */,
@@ -278,6 +281,7 @@
 			files = (
 				50386BB31DEF42480024126E /* userChallenge.swift in Sources */,
 				50386BB51DEF4B550024126E /* String.swift in Sources */,
+				211D71781DF3917300C5F0F0 /* ChallengeInfoVC.swift in Sources */,
 				211D71661DDE201A00C5F0F0 /* TimelineVC.swift in Sources */,
 				5010368C1DDCD89400068403 /* ChallengeCreationController.swift in Sources */,
 				5010368E1DDCD89F00068403 /* challengeObject.swift in Sources */,
