@@ -71,8 +71,11 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                         
                         let name = profile.displayName
                         let uid = profile.uid
+                        let photoURL = profile.photoURL
                         //TODO: Is this bad?
                         self.ref.child("Users/\(uid)/Name").setValue(name)
+                        
+                        self.ref.child("Users/\(uid)/Picture").setValue("\(photoURL!)")
                         
                     }
                     self.performSegue(withIdentifier: "homeSegue", sender: self)
@@ -95,6 +98,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     // MARK: - FB User
     public func getUserInfo(){
+        // THIS METHOD ISNT USED
         if let user = FIRAuth.auth()?.currentUser {
             // TODO: Multiple profiles?
             for profile in user.providerData {
@@ -106,6 +110,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 let uid = profile.uid
                 //TODO: Is this bad?
                 self.ref.child("Users/\(uid)/Name").setValue(name)
+                self.ref.child("Users/\(uid)/Picture").setValue(photoURL!)
                 
             }
             

@@ -38,6 +38,7 @@ class HomeTableVC: UITableViewController {
             var creator: Bool = true
             var opponent: String = ""
             var id: String = ""
+            var won: Bool = false
             if let nameVal = dict.value(forKey: "name") {
                 name = nameVal as! String
             }
@@ -56,9 +57,12 @@ class HomeTableVC: UITableViewController {
             if let idString = dict.value(forKey:"id") {
                 id = idString as! String
             }
+            if let wonVal = dict.value(forKey:"won") {
+                won = wonVal as! Bool
+            }
             
             
-            let challenge = UserChallenge(creator: creator, name: name, status: status, opponent:opponent, id: id)
+            let challenge = UserChallenge(creator: creator, name: name, status: status, opponent:opponent, id: id, won: won)
             
             // Remove the old challenge if it's still there
             var indexToRemove = (-1,-1)
@@ -87,6 +91,7 @@ class HomeTableVC: UITableViewController {
             var creator: Bool = true
             var opponent: String = ""
             var id: String = ""
+            var won: Bool = false
             if let nameVal = dict.value(forKey: "name") {
                 name = nameVal as! String
             }
@@ -105,9 +110,12 @@ class HomeTableVC: UITableViewController {
             if let idString = dict.value(forKey:"id") {
                 id = idString as! String
             }
+            if let wonVal = dict.value(forKey:"won") {
+                won = wonVal as! Bool
+            }
             
             
-            let challenge = UserChallenge(creator: creator, name: name, status: status, opponent:opponent, id: id)
+            let challenge = UserChallenge(creator: creator, name: name, status: status, opponent:opponent, id: id, won: won)
             // this is gonna crash if status is not correct
             if (status != -1){
                 self.challenges[status].append(challenge)
