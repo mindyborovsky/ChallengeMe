@@ -1,12 +1,10 @@
-Accept challenges
-Create events
 show events
-upload pictures
-challenge termination
-stats view
-UI
+show challenge info
+validate forms
+UI colors
+UI auto layout
+UI font sizes
+remove warnings
 async the db calls
-clean up directory structure
 fix todos
-fix quickly pressing log out bug
 

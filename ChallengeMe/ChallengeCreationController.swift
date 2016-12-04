@@ -20,7 +20,9 @@ class ChallengeCreationController: UIViewController {
     @IBOutlet weak var challengeNameField: UITextField!
     @IBOutlet weak var challengeGoalField: UITextField!
     @IBOutlet weak var onTheLineField: UITextField!
+    @IBOutlet weak var createChallengeButton: UIButton!
     @IBOutlet weak var durationTextField: UITextField!
+    @IBOutlet weak var invalidLabel: UILabel!
     
     // TODO: Clean this up
     var name: String?
@@ -59,23 +61,95 @@ class ChallengeCreationController: UIViewController {
         // Do any additional setup after loading the view.
         
         //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         
         //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
         tap.cancelsTouchesInView = false
         
         view.addGestureRecognizer(tap)
+        
+        self.createChallengeButton.isEnabled = false
+        self.createChallengeButton.titleLabel?.textColor = UIColor.lightGray
+        
+        
     }
     
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
+        updateView()
+        self.view.setNeedsDisplay()
+        
+    }
+    
+    func updateView() {
+        var isValid = true
+
+        
+        if let reward = onTheLineField.text {
+            if reward.isEmpty {
+                isValid = false
+                self.invalidLabel.text = "Please choose what's on the line"
+            }
+        }
+        
+        if let durationString = durationTextField.text {
+            if let duration = Int(durationString) {
+                if duration < 1 {
+                    isValid = false
+                    self.invalidLabel.text = "Please enter a valid duration"
+                }
+            } else {
+                self.invalidLabel.text = "Please enter a valid duration"
+                isValid = false
+            }
+        }
+        
+        
+        if let goal = challengeGoalField.text {
+            if goal.isEmpty {
+                isValid = false
+                self.invalidLabel.text = "Please enter a goal"
+            }
+        }
+        
+        if opponent == nil {
+            isValid = false
+            self.invalidLabel.text = "Please select an opponent"
+        }
+        
+        if let name = challengeNameField.text {
+            if name.isEmpty {
+                isValid = false
+                self.invalidLabel.text = "Please enter a challenge name"
+            }
+        }
+        
+        self.createChallengeButton.isEnabled = isValid
+        if isValid {
+            // TODO: THis doesn't update until a second tap
+            self.createChallengeButton.isHidden = true
+            self.createChallengeButton.titleLabel?.textColor = UIColor.white
+            self.createChallengeButton.isHidden = false
+            self.invalidLabel.isHidden = true
+            
+        } else {
+            self.createChallengeButton.isHidden = true
+            self.createChallengeButton.titleLabel?.textColor = UIColor.lightGray
+            self.createChallengeButton.isHidden = false
+            self.invalidLabel.isHidden = false
+        }
+        
+        self.createChallengeButton.setNeedsDisplay()
+        self.view.setNeedsDisplay()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.opponentLabel.text = opponent?.name
+        updateView()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -151,18 +225,15 @@ class ChallengeCreationController: UIViewController {
             self.ref.child("Users/\(uid!)/Challenges/\(challengeId)").setValue(userChallengeDict)
             
             
-        //self.ref.child("Users"/\()
-        // Add challenge to current user
-        // Add challenge to opponent
         }
-        
-        self.navigationController?.popViewController(animated: true)
-        
-        // TODO: alert user challenge is made
+        self.dismiss(animated: true, completion: {
+            
+            }
+        )
     }
     
     @IBAction func findFriends(_ sender: UIButton) {
-        
+        updateView()
     }
     
     
