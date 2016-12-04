@@ -25,6 +25,7 @@ class HomeTableVC: UITableViewController {
     let sectionTitles = ["Pending Challenges", "Current Challenges", "Past Challenges"]
     
     var userID = String()
+    var userName: String?
     
     // MARK: - Data
     func loadChallenges(_ uid: String) {
@@ -123,8 +124,7 @@ class HomeTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        // TODO: this sucks
+        // TODO: this sucks, it might not be that bad.
         if let user = FIRAuth.auth()?.currentUser {
             // TODO: Multiple profiles?
             for profile in user.providerData {
@@ -135,6 +135,7 @@ class HomeTableVC: UITableViewController {
                 //let photoURL = profile.photoURL
                 let uid = profile.uid
                 userID = profile.uid
+                userName = name
                 
                 print(name!)
                 print(uid)
@@ -261,6 +262,12 @@ class HomeTableVC: UITableViewController {
         if segue.destination.isKind(of: AcceptChallenge.self){
             let vc = segue.destination as! AcceptChallenge
             vc.userChallenge = selectedChallenge
+        }
+        // this doesnt fire
+        if segue.destination.isKind(of: StatsViewController.self){
+            let vc = segue.destination as! StatsViewController
+            vc.userId = userID
+            vc.userName = userName!
         }
      }
  

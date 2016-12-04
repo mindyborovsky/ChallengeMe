@@ -29,6 +29,7 @@
 		50386BB51DEF4B550024126E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50386BB41DEF4B550024126E /* String.swift */; };
 		50393E4D1DD3F5F300634411 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50393E4C1DD3F5F300634411 /* FBSDKLoginKit.framework */; };
 		50A8C0C91DDA3A5800A5A553 /* HomeTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A8C0C81DDA3A5800A5A553 /* HomeTableVC.swift */; };
+		50B5B77C1DF37B3B009241DA /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B5B77B1DF37B3B009241DA /* StatsViewController.swift */; };
 		50F8ABA81DDF6F9D005A4D13 /* FindFriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F8ABA71DDF6F9D005A4D13 /* FindFriendsController.swift */; };
 		D8ECBFA63CF51D25ECBE4915 /* Pods_ChallengeMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55AFDA20816199582625CCE /* Pods_ChallengeMe.framework */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		50393E4C1DD3F5F300634411 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		50439E591DDB808100483331 /* ChallengeMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChallengeMe.entitlements; sourceTree = "<group>"; };
 		50A8C0C81DDA3A5800A5A553 /* HomeTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableVC.swift; sourceTree = "<group>"; };
+		50B5B77B1DF37B3B009241DA /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		50F8ABA71DDF6F9D005A4D13 /* FindFriendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindFriendsController.swift; sourceTree = "<group>"; };
 		A58DA11B33AF8B530684C8AD /* Pods-ChallengeMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChallengeMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChallengeMe/Pods-ChallengeMe.debug.xcconfig"; sourceTree = "<group>"; };
 		B55AFDA20816199582625CCE /* Pods_ChallengeMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChallengeMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +124,7 @@
 				503843251DD3E19B009E3DF7 /* ViewController.swift */,
 				503843271DD3E19B009E3DF7 /* Main.storyboard */,
 				211D71771DF3917300C5F0F0 /* ChallengeInfoVC.swift */,
+				50B5B77B1DF37B3B009241DA /* StatsViewController.swift */,
 				5010368F1DDCDEB000068403 /* User.swift */,
 				50A8C0C81DDA3A5800A5A553 /* HomeTableVC.swift */,
 				5010368D1DDCD89F00068403 /* challengeObject.swift */,
@@ -284,6 +287,7 @@
 				211D71781DF3917300C5F0F0 /* ChallengeInfoVC.swift in Sources */,
 				211D71661DDE201A00C5F0F0 /* TimelineVC.swift in Sources */,
 				5010368C1DDCD89400068403 /* ChallengeCreationController.swift in Sources */,
+				50B5B77C1DF37B3B009241DA /* StatsViewController.swift in Sources */,
 				5010368E1DDCD89F00068403 /* challengeObject.swift in Sources */,
 				501036901DDCDEB000068403 /* User.swift in Sources */,
 				211D71741DF0FD9800C5F0F0 /* eventObject.swift in Sources */,

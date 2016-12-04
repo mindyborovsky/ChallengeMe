@@ -159,6 +159,9 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
                         let data = try? Data(contentsOf: URL!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                         DispatchQueue.main.async {
                             eventButton.setImage(UIImage(data: data!), for: .normal)
+                            // this is delayed by a cycle
+                            self.view.setNeedsDisplay()
+                            
                         }
                     }
                 }

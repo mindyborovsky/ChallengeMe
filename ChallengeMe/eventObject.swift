@@ -11,6 +11,7 @@ import Foundation
 struct Event {
     var description: String?
     var userId: String?
+    // image link isn't used
     var imageLink: String?
     var id: String?
     

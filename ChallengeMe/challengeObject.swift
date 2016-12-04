@@ -105,7 +105,7 @@ struct Challenge {
         dict["reward"] = self.reward!
         dict["status"] = self.status!
         dict["duration"] = self.duration!
-        var eventsObject: Optional<Dictionary<String,Any>>
+        var eventsObject: Optional<Dictionary<String,Any>> = ["count":self.events.count]
         for i in 0..<self.events.count {
             if eventsObject == nil {
                 eventsObject = ["0":""]
@@ -113,6 +113,7 @@ struct Challenge {
             let eventDict = self.events[i].toDictionary()
             eventsObject!.updateValue(eventDict, forKey: String(i))
         }
+        dict["events"] = eventsObject
         dict["winnerId"] = self.winnerId ?? ""
         
         return dict
@@ -139,7 +140,5 @@ struct Challenge {
         opponentChallenge.saveToFirebase(ref: ref, uid: self.opponentId!)
         self.saveToFirebase(ref: ref)
         
-        // Increment ref
-        ref.child("Usrs/")
     }
 }
