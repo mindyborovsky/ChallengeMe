@@ -226,10 +226,8 @@ class ChallengeCreationController: UIViewController {
             
             
         }
-        self.dismiss(animated: true, completion: {
-            
-            }
-        )
+        self.navigationController?.popViewController(animated: true)
+        
     }
     
     @IBAction func findFriends(_ sender: UIButton) {
