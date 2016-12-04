@@ -85,17 +85,17 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVt-GE-kI5">
-                                <rect key="frame" x="151" y="583" width="73" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVt-GE-kI5">
+                                <rect key="frame" x="130" y="574" width="115" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Challenge!">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="createChallenge:" destination="aG6-7K-rCj" eventType="touchUpInside" id="Pe2-l0-LtB"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZYo-WG-M8B">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Challenge" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZYo-WG-M8B">
                                 <rect key="frame" x="74" y="92" width="277" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -138,7 +138,7 @@
                                 <rect key="frame" x="106" y="152" width="150" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="5" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4F4-c3-RTX">
@@ -155,13 +155,27 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter a challenge name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9x-Kw-AyO">
+                                <rect key="frame" x="71" y="545" width="233" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.054901960780000002" green="0.74901960779999999" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZVt-GE-kI5" firstAttribute="top" secondItem="c9x-Kw-AyO" secondAttribute="bottom" constant="8" id="JlO-H3-4MJ"/>
+                            <constraint firstItem="9PZ-FW-2dv" firstAttribute="top" secondItem="ZVt-GE-kI5" secondAttribute="bottom" constant="8" id="gf8-bS-dBV"/>
+                            <constraint firstItem="ZVt-GE-kI5" firstAttribute="centerX" secondItem="tYa-iE-1hM" secondAttribute="centerX" id="q5n-KW-gRW"/>
+                            <constraint firstItem="c9x-Kw-AyO" firstAttribute="centerX" secondItem="tYa-iE-1hM" secondAttribute="centerX" id="qkk-r7-gyb"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="challengeGoalField" destination="6rN-ud-uBj" id="mez-ni-Zdq"/>
                         <outlet property="challengeNameField" destination="ZYo-WG-M8B" id="Bmm-0Q-ZIE"/>
+                        <outlet property="createChallengeButton" destination="ZVt-GE-kI5" id="aaR-3F-eo7"/>
                         <outlet property="durationTextField" destination="4F4-c3-RTX" id="Rlf-vy-Iqo"/>
+                        <outlet property="invalidLabel" destination="c9x-Kw-AyO" id="Zmc-hY-Z4J"/>
                         <outlet property="onTheLineField" destination="mQo-8u-vdU" id="dvE-o7-Yzg"/>
                         <outlet property="opponentLabel" destination="b40-Y0-h32" id="n0Y-pz-Jul"/>
                     </connections>
@@ -183,7 +197,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dCM-Pb-Glq" id="atW-dN-Oet">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
