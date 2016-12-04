@@ -24,6 +24,7 @@ class StatsViewController: UIViewController {
     var profileURL: URL?
     var challengesCompleted: Int?
     var challengesWon: Int?
+    var userChallenges: [UserChallenge] = []
     
     
     override func viewDidLoad() {
@@ -38,12 +39,13 @@ class StatsViewController: UIViewController {
                 userId = profile.uid
                 userName = profile.displayName
                 self.profileURL = photoURL
-                
+                // start spin
                 DispatchQueue.global().async {
                     let dataContents = try? Data(contentsOf: photoURL!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                     if let data = dataContents {
                         self.imageView.image = UIImage(data: data)
                         DispatchQueue.main.async {
+                            // end spin
                             self.updateView()
                             self.imageView.setNeedsDisplay()
                         }
@@ -75,7 +77,8 @@ class StatsViewController: UIViewController {
                 let winPercentage = Double(challengesWon!) / Double(total) * 10000.0
                 let winPercentageInt = winPercentage.rounded() / 100
             
-                winPercentageLabel.text = "Win Percentage: \(winPercentageInt))"
+                winPercentageLabel.text = "Win Percentage: \(winPercentageInt)"
+               // NSAttributedString
             } else {
                 winPercentageLabel.text = "You have no completed challenges!"
             }
@@ -115,8 +118,13 @@ class StatsViewController: UIViewController {
             let valueDict = value as? NSDictionary
             if let challengeDict = valueDict {
                 let status = challengeDict["status"] as? Int ?? -1
-                if status != -1 {
-                    //let challenge = UserChallenge.initWith(dictionary: challengeDict)
+                if status == 2 {
+                    let challenge = UserChallenge.initWith(dictionary: challengeDict)
+                    if challenge.won {
+                        challengesWon! += 1
+                    }
+                    challengesCompleted! += 1
+                    userChallenges.append(challenge)
                 }
             }
         }
