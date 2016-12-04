@@ -45,6 +45,7 @@ class StatsViewController: UIViewController {
                         self.imageView.image = UIImage(data: data)
                         DispatchQueue.main.async {
                             self.updateView()
+                            self.imageView.setNeedsDisplay()
                         }
                     } else {
                         // error fetching photoURL
@@ -55,6 +56,7 @@ class StatsViewController: UIViewController {
         } else {
             
         }
+        updateView()
         setUpObsever()
         // Do any additional setup after loading the view.
     }
@@ -66,11 +68,22 @@ class StatsViewController: UIViewController {
     
     func updateView() {
         titleLabel.text = "My Stats"
-        challengesWonLabel.text = "Challenges Won: \(challengesWon)"
-        challegesCompletedLabel.text = "Challenges Completed: \(challengesCompleted)"
-        let winPercentage = Double(challengesWon!) / Double(challengesCompleted!) * 10000.0
-        let winPercentageInt = winPercentage.rounded() / 100
-        winPercentageLabel.text = "Win Percentage: \(winPercentageInt))"
+        if let total = challengesCompleted {
+        challengesWonLabel.text = "Challenges Won: \(challengesWon!)"
+        challegesCompletedLabel.text = "Challenges Completed: \(challengesCompleted!)"
+            if total != 0 {
+                let winPercentage = Double(challengesWon!) / Double(total) * 10000.0
+                let winPercentageInt = winPercentage.rounded() / 100
+            
+                winPercentageLabel.text = "Win Percentage: \(winPercentageInt))"
+            } else {
+                winPercentageLabel.text = "You have no completed challenges!"
+            }
+        } else {
+            winPercentageLabel.text = "You have no completed challenges!"
+            challengesWonLabel.text = "Challenges Won: 0"
+            challegesCompletedLabel.text = "Challenges Completed: 0"
+        }
     }
     
     
