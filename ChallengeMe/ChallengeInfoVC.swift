@@ -34,6 +34,7 @@ class ChallengeInfoVC: UIViewController {
             
             let dict: NSDictionary = snapshot.value as! NSDictionary
             if let creatorPic = dict["Picture"] as? String {
+                print(creatorPic)
                 DispatchQueue.global().async {
                     let url = NSURL(string: creatorPic)
                     let data = try? Data(contentsOf: url! as URL) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
