@@ -14,18 +14,50 @@ import FirebaseStorage
 
 class ChallengeInfoVC: UIViewController {
     
+    @IBOutlet weak var numComNeed: UILabel!
+    @IBOutlet weak var myGoal: UILabel!
+    
+    @IBOutlet weak var onTheLine: UILabel!
     @IBOutlet weak var creatorImage: UIImageView!
+    @IBOutlet weak var opponentGoal: UILabel!
     
     @IBOutlet weak var opponentImage: UIImageView!
     
     var currChallenge = Challenge()
     
+    
     var ref: FIRDatabaseReference!
+    
+    // TODO: Clean this up
+    var name: String?
+    var email: String?
+    var opponent: User?
+    var photoURL: URL?
+    var uid: String?
+    
+    func getUserInfo() {
+        if let user = FIRAuth.auth()?.currentUser {
+            for profile in user.providerData {
+                
+                
+                self.name = profile.displayName
+                self.email = profile.email
+                self.photoURL = profile.photoURL
+                self.uid = profile.uid
+                
+            }
+            
+        } else {
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         ref = FIRDatabase.database().reference()
+        
+        getUserInfo()
         
         ref.child("Users/\(currChallenge.creatorId!)").observeSingleEvent(of: .value, with: { snapshot in
             
@@ -47,6 +79,40 @@ class ChallengeInfoVC: UIViewController {
                 }
             }
         });
+        
+        ref.child("Users/\(currChallenge.opponentId!)").observeSingleEvent(of: .value, with: { snapshot in
+            
+            if !snapshot.exists() { return }
+            
+            
+            let dict: NSDictionary = snapshot.value as! NSDictionary
+            if let opponentPic = dict["Picture"] as? String {
+                print(opponentPic)
+                DispatchQueue.global().async {
+                    let url = NSURL(string: opponentPic)
+                    let data = try? Data(contentsOf: url! as URL) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                    DispatchQueue.main.async {
+                        self.opponentImage.image = UIImage(data: data!)
+                        // this is delayed by a cycle
+                        self.view.setNeedsDisplay()
+                        
+                    }
+                }
+            }
+        });
+        
+        if (currChallenge.creatorId! == self.uid!) {
+            myGoal.text = "My Goal: \(currChallenge.creatorGoal!)"
+            opponentGoal.text = "Opponent's Goal: \(currChallenge.opponentGoal!)"
+        }
+        else {
+            myGoal.text = "My Goal: \(currChallenge.opponentGoal!)"
+            opponentGoal.text = "Opponent's Goal: \(currChallenge.creatorGoal!)"
+        }
+        
+        onTheLine.text = "\(currChallenge.reward!)"
+        
+        numComNeed.text = "Number of Completions Needed: \(currChallenge.duration!)"
         
         self.title = currChallenge.name
         // Do any additional setup after loading the view.

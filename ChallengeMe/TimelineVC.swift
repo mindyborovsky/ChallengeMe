@@ -21,6 +21,8 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
     
     var navTitle = UINavigationItem(title: "navTitle")
     
+    var curTag = Int()
+    
     // TODO: Clean this up
     var name: String?
     var email: String?
@@ -92,6 +94,8 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
         let theFrame = CGRect(x:0, y:0, width: self.view.frame.width, height: self.view.frame.height)
         
         let scrollView = UIScrollView(frame: theFrame)
+        
+        
         
         //scrollView.maximumZoomScale = 10.0;
         //scrollView.minimumZoomScale = 1.0;
@@ -173,7 +177,8 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
             eventButton.layer.borderWidth = 3.0
             eventButton.layer.borderColor = UIColor.black.cgColor
             eventButton.layer.backgroundColor = UIColor.black.cgColor
-            //          May want to se the eventButton tag to some type of id of the event
+            eventButton.tag = actualEventNum
+            //          May want to set the eventButton tag to some type of id of the event
             eventButton.addTarget(self, action: #selector(eventButtonClick), for: UIControlEvents.touchUpInside)
             tlView.addSubview(eventButton)
         }
@@ -221,6 +226,7 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
     }
     
     func eventButtonClick(sender: UIButton) {
+        curTag = sender.tag
         self.performSegue(withIdentifier: "timelineToViewEvent", sender: self)
     }
     
@@ -237,6 +243,11 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
         if segue.destination.isKind(of: ChallengeInfoVC.self) {
             let vc = segue.destination as! ChallengeInfoVC
             vc.currChallenge = currChallenge
+        }
+        if segue.destination.isKind(of: ViewEventVC.self) {
+            let vc = segue.destination as! ViewEventVC
+            vc.currChallenge = currChallenge
+            vc.eventTag = curTag
         }
     }
     /*
