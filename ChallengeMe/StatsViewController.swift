@@ -99,7 +99,7 @@ class StatsViewController: UIViewController {
                 winPercentageLabel.text = "Win Percentage: \(winPercentageInt)%"
                 // NSAttributedString
             } else {
-                winPercentageLabel.text = "You have no completed challenges!"
+                winPercentageLabel.text = "No completed challenges"
             }
         } else {
             winPercentageLabel.text = "No completed challenges"
