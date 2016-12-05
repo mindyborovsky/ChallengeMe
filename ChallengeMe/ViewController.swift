@@ -14,7 +14,7 @@ import FBSDKLoginKit
 
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     var userLoggedIn = false
-    @IBOutlet weak var loginButton: UIButton!
+    var loginButton: FBSDKLoginButton?
     
     var ref: FIRDatabaseReference!
     
@@ -35,11 +35,11 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         else
         {
-            let loginView : FBSDKLoginButton = FBSDKLoginButton()
-            self.view.addSubview(loginView)
-            loginView.center = self.view.center
-            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-            loginView.delegate = self
+            self.loginButton = FBSDKLoginButton()
+            self.view.addSubview(loginButton!)
+            loginButton?.center = self.view.center
+            loginButton?.readPermissions = ["public_profile", "email", "user_friends"]
+            loginButton?.delegate = self
         }
         
         ref = FIRDatabase.database().reference()
@@ -62,7 +62,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         // check result
         if FBSDKAccessToken.current() != nil {
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-            
+             loginButton.isHidden = true
             FIRAuth.auth()?.signIn(with: credential) {(user, error) in
                 // handle error
                 if let result = user {

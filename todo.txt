@@ -1,10 +1,6 @@
-show events
-show challenge info
 validate forms
 UI colors
 UI auto layout
 UI font sizes
-remove warnings
-async the db calls
 fix todos
 

@@ -77,7 +77,7 @@ class StatsViewController: UIViewController {
                 let winPercentage = Double(challengesWon!) / Double(total) * 10000.0
                 let winPercentageInt = winPercentage.rounded() / 100
             
-                winPercentageLabel.text = "Win Percentage: \(winPercentageInt)"
+                winPercentageLabel.text = "Win Percentage: \(winPercentageInt)%"
                // NSAttributedString
             } else {
                 winPercentageLabel.text = "You have no completed challenges!"

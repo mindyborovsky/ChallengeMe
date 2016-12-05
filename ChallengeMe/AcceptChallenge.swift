@@ -95,8 +95,8 @@ class AcceptChallenge: UIViewController {
         challenger.text =  (challengerName) + " challenged you!"
         creatorGoal.text = (challengerName) + "'s goal is to " + (challenge.creatorGoal)!
         }
-        onTheLine.text = challenge.reward
-        durationLabel.text = "First to \(challenge.duration!) wins!"
+        onTheLine.text = "What's on the line: \(challenge.reward!)"
+        durationLabel.text = "First to complete their goal \(challenge.duration!) times wins!"
     }
 
     override func didReceiveMemoryWarning() {
