@@ -70,7 +70,7 @@ class ChallengeCreationController: UIViewController {
         view.addGestureRecognizer(tap)
         
         self.createChallengeButton.isEnabled = false
-        self.createChallengeButton.titleLabel?.textColor = UIColor.lightGray
+        //self.createChallengeButton.titleLabel?.textColor = UIColor.lightGray
         
         
     }
@@ -136,7 +136,7 @@ class ChallengeCreationController: UIViewController {
             
         } else {
             self.createChallengeButton.isHidden = true
-            self.createChallengeButton.titleLabel?.textColor = UIColor.lightGray
+            //self.createChallengeButton.titleLabel?.textColor = UIColor.lightGray
             self.createChallengeButton.isHidden = false
             self.invalidLabel.isHidden = false
         }
