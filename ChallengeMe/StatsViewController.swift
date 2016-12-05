@@ -32,7 +32,8 @@ class StatsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        spinner.isHidden = true
+        self.spinner.isHidden = true
+        self.spinner.setNeedsDisplay()
         images = ImageCache.loadCache()
         // TODO: this sucks, it might not be that bad.
         if let user = FIRAuth.auth()?.currentUser {
@@ -79,6 +80,7 @@ class StatsViewController: UIViewController {
         setUpObsever()
         // Do any additional setup after loading the view.
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
