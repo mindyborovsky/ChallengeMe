@@ -17,7 +17,9 @@ class StatsViewController: UIViewController {
     @IBOutlet weak var winPercentageLabel: UILabel!
     @IBOutlet weak var challengesWonLabel: UILabel!
     @IBOutlet weak var challegesCompletedLabel: UILabel!
-
+   
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     
     var userName: String?
     var userId: String?
@@ -25,10 +27,13 @@ class StatsViewController: UIViewController {
     var challengesCompleted: Int?
     var challengesWon: Int?
     var userChallenges: [UserChallenge] = []
+    var images: [String:UIImage] = [:]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        spinner.isHidden = true
+        images = ImageCache.loadCache()
         // TODO: this sucks, it might not be that bad.
         if let user = FIRAuth.auth()?.currentUser {
             // TODO: Multiple profiles?
@@ -40,18 +45,30 @@ class StatsViewController: UIViewController {
                 userName = profile.displayName
                 self.profileURL = photoURL
                 // start spin
-                DispatchQueue.global().async {
-                    let dataContents = try? Data(contentsOf: photoURL!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                    if let data = dataContents {
-                        self.imageView.image = UIImage(data: data)
-                        DispatchQueue.main.async {
-                            // end spin
-                            self.updateView()
-                            self.imageView.setNeedsDisplay()
+                if (images[(self.profileURL?.absoluteString)!] == nil) {
+                    self.spinner.startAnimating()
+                    self.spinner.isHidden = false
+                    //cache
+                    DispatchQueue.global().async {
+                        let dataContents = try? Data(contentsOf: photoURL!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                        if let data = dataContents {
+                            let image = UIImage(data: data)
+                            self.images[(self.profileURL?.absoluteString)!] = image
+                            DispatchQueue.main.async {
+                                // end spin
+                                self.imageView.image = image
+                                self.updateView()
+                                self.spinner.stopAnimating()
+                                self.imageView.setNeedsDisplay()
+                            }
+                        } else {
+                            // error fetching photoURL
+                            
                         }
-                    } else {
-                        // error fetching photoURL
                     }
+                } else {
+                    print("cache hit")
+                    self.imageView.image = self.images[(self.profileURL?.absoluteString)!]
                 }
             }
             
@@ -62,7 +79,7 @@ class StatsViewController: UIViewController {
         setUpObsever()
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -71,14 +88,14 @@ class StatsViewController: UIViewController {
     func updateView() {
         titleLabel.text = "My Stats"
         if let total = challengesCompleted {
-        challengesWonLabel.text = "Challenges Won: \(challengesWon!)"
-        challegesCompletedLabel.text = "Challenges Completed: \(challengesCompleted!)"
+            challengesWonLabel.text = "Challenges Won: \(challengesWon!)"
+            challegesCompletedLabel.text = "Challenges Completed: \(challengesCompleted!)"
             if total != 0 {
                 let winPercentage = Double(challengesWon!) / Double(total) * 10000.0
                 let winPercentageInt = winPercentage.rounded() / 100
-            
+                
                 winPercentageLabel.text = "Win Percentage: \(winPercentageInt)%"
-               // NSAttributedString
+                // NSAttributedString
             } else {
                 winPercentageLabel.text = "You have no completed challenges!"
             }
@@ -93,23 +110,23 @@ class StatsViewController: UIViewController {
     // MARK: - Data
     func setUpObsever() {
         if let uid = userId {
-        let ref = FIRDatabase.database().reference()
-        ref.child("Users/").child(uid).observe(FIRDataEventType.value, with: { (snapshot: FIRDataSnapshot) in
-            
-            let dict = snapshot.value as? NSDictionary ?? [:]
-            let challenges = dict["Challenges"] as? NSDictionary ?? [:]
-            self.challengesWon = dict["challengesWon"] as? Int ?? 0
-            self.challengesCompleted = dict["challengesCompleted"] as? Int ?? 0
-            
-            self.calculateStats(challengesDict: challenges)
-            
-            self.updateView()
-            
-        }) { (error) in
-            print(error.localizedDescription)
+            let ref = FIRDatabase.database().reference()
+            ref.child("Users/").child(uid).observe(FIRDataEventType.value, with: { (snapshot: FIRDataSnapshot) in
+                
+                let dict = snapshot.value as? NSDictionary ?? [:]
+                let challenges = dict["Challenges"] as? NSDictionary ?? [:]
+                self.challengesWon = dict["challengesWon"] as? Int ?? 0
+                self.challengesCompleted = dict["challengesCompleted"] as? Int ?? 0
+                
+                self.calculateStats(challengesDict: challenges)
+                
+                self.updateView()
+                
+            }) { (error) in
+                print(error.localizedDescription)
+            }
         }
-        }
-
+        
         
     }
     
@@ -129,15 +146,20 @@ class StatsViewController: UIViewController {
             }
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        ImageCache.saveCache(cache: self.images)
+        super.viewWillDisappear(animated)
     }
-    */
-
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

@@ -29,6 +29,7 @@
 		50386BB31DEF42480024126E /* userChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50386BB21DEF42480024126E /* userChallenge.swift */; };
 		50386BB51DEF4B550024126E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50386BB41DEF4B550024126E /* String.swift */; };
 		50393E4D1DD3F5F300634411 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50393E4C1DD3F5F300634411 /* FBSDKLoginKit.framework */; };
+		505514161DF605F3001D9A78 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505514151DF605F3001D9A78 /* ImageCache.swift */; };
 		50A8C0C91DDA3A5800A5A553 /* HomeTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A8C0C81DDA3A5800A5A553 /* HomeTableVC.swift */; };
 		50B5B77C1DF37B3B009241DA /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B5B77B1DF37B3B009241DA /* StatsViewController.swift */; };
 		50F8ABA81DDF6F9D005A4D13 /* FindFriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F8ABA71DDF6F9D005A4D13 /* FindFriendsController.swift */; };
@@ -62,6 +63,7 @@
 		50386BB41DEF4B550024126E /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		50393E4C1DD3F5F300634411 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		50439E591DDB808100483331 /* ChallengeMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChallengeMe.entitlements; sourceTree = "<group>"; };
+		505514151DF605F3001D9A78 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		50A8C0C81DDA3A5800A5A553 /* HomeTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableVC.swift; sourceTree = "<group>"; };
 		50B5B77B1DF37B3B009241DA /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		50F8ABA71DDF6F9D005A4D13 /* FindFriendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindFriendsController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				50B5B77B1DF37B3B009241DA /* StatsViewController.swift */,
 				5010368F1DDCDEB000068403 /* User.swift */,
 				50A8C0C81DDA3A5800A5A553 /* HomeTableVC.swift */,
+				505514151DF605F3001D9A78 /* ImageCache.swift */,
 				5010368D1DDCD89F00068403 /* challengeObject.swift */,
 				50386BB41DEF4B550024126E /* String.swift */,
 				50386BB21DEF42480024126E /* userChallenge.swift */,
@@ -287,6 +290,7 @@
 			files = (
 				50386BB31DEF42480024126E /* userChallenge.swift in Sources */,
 				50386BB51DEF4B550024126E /* String.swift in Sources */,
+				505514161DF605F3001D9A78 /* ImageCache.swift in Sources */,
 				2195F6291DF3B1F100768900 /* ViewEventVC.swift in Sources */,
 				211D71781DF3917300C5F0F0 /* ChallengeInfoVC.swift in Sources */,
 				211D71661DDE201A00C5F0F0 /* TimelineVC.swift in Sources */,
