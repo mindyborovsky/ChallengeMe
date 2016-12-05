@@ -65,25 +65,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfa-qg-6Xg">
-                                <rect key="frame" x="16" y="99" width="50" height="21"/>
+                                <rect key="frame" x="16" y="100" width="50" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="OJ8-GN-wP2"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opponent:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pol-jN-AYS">
-                                <rect key="frame" x="16" y="162" width="82" height="21"/>
+                                <rect key="frame" x="16" y="160" width="82" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Goal:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRc-p0-xZx">
-                                <rect key="frame" x="16" y="225" width="79" height="21"/>
+                                <rect key="frame" x="16" y="223" width="79" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVt-GE-kI5">
-                                <rect key="frame" x="130" y="574" width="115" height="41"/>
+                                <rect key="frame" x="130" y="572" width="115" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Challenge!">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -93,31 +96,31 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Challenge" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZYo-WG-M8B">
-                                <rect key="frame" x="74" y="96" width="285" height="30"/>
+                                <rect key="frame" x="74" y="96" width="285" height="28"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Run for 30 minutes" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6rN-ud-uBj">
-                                <rect key="frame" x="103" y="220" width="256" height="30"/>
+                                <rect key="frame" x="103" y="218" width="256" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ted Drewes" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mQo-8u-vdU">
-                                <rect key="frame" x="16" y="399" width="343" height="30"/>
+                                <rect key="frame" x="16" y="397" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's on the Line:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcO-ah-qil">
-                                <rect key="frame" x="16" y="370" width="147" height="21"/>
+                                <rect key="frame" x="16" y="368" width="147" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFF-j2-xq3">
-                                <rect key="frame" x="138" y="158" width="221" height="30"/>
+                                <rect key="frame" x="138" y="156" width="221" height="30"/>
                                 <state key="normal" title="Find Friends!">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -127,25 +130,25 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b40-Y0-h32" userLabel="SelectedOpponent">
-                                <rect key="frame" x="106" y="183" width="0.0" height="0.0"/>
+                                <rect key="frame" x="106" y="181" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="5" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4F4-c3-RTX">
-                                <rect key="frame" x="16" y="308" width="343" height="30"/>
+                                <rect key="frame" x="16" y="306" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter a challenge name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9x-Kw-AyO">
-                                <rect key="frame" x="71" y="545" width="233" height="21"/>
+                                <rect key="frame" x="71" y="543" width="233" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set the number of goal completions needed to win:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n85-V4-TMg">
-                                <rect key="frame" x="13" y="282" width="349.5" height="18"/>
+                                <rect key="frame" x="13" y="280" width="350" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -156,6 +159,7 @@
                             <constraint firstItem="ZYo-WG-M8B" firstAttribute="leading" secondItem="Bfa-qg-6Xg" secondAttribute="trailing" constant="8" id="2v0-o6-elY"/>
                             <constraint firstItem="b40-Y0-h32" firstAttribute="leading" secondItem="pol-jN-AYS" secondAttribute="trailing" constant="8" id="3fi-3q-gIj"/>
                             <constraint firstItem="4F4-c3-RTX" firstAttribute="top" secondItem="n85-V4-TMg" secondAttribute="bottom" constant="8" id="61H-Jb-UL7"/>
+                            <constraint firstItem="Bfa-qg-6Xg" firstAttribute="top" secondItem="pKs-vU-MiH" secondAttribute="bottom" constant="36" id="7cs-97-3kS"/>
                             <constraint firstItem="n85-V4-TMg" firstAttribute="top" secondItem="6rN-ud-uBj" secondAttribute="bottom" constant="32" id="98e-Ra-MAn"/>
                             <constraint firstItem="6rN-ud-uBj" firstAttribute="top" secondItem="gFF-j2-xq3" secondAttribute="bottom" constant="32" id="AyP-cc-3kv"/>
                             <constraint firstItem="b40-Y0-h32" firstAttribute="baseline" secondItem="gFF-j2-xq3" secondAttribute="baseline" id="Bg2-nX-vy4"/>
@@ -173,7 +177,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="6rN-ud-uBj" secondAttribute="trailing" id="Zcx-tX-ITb"/>
                             <constraint firstItem="Bfa-qg-6Xg" firstAttribute="baseline" secondItem="ZYo-WG-M8B" secondAttribute="baseline" id="gGI-fR-81B"/>
                             <constraint firstItem="pcO-ah-qil" firstAttribute="top" secondItem="4F4-c3-RTX" secondAttribute="bottom" constant="32" id="gNq-oP-aGc"/>
-                            <constraint firstItem="9PZ-FW-2dv" firstAttribute="top" secondItem="ZVt-GE-kI5" secondAttribute="bottom" constant="8" id="gf8-bS-dBV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gFF-j2-xq3" secondAttribute="trailing" id="lEk-TG-JMn"/>
                             <constraint firstItem="mQo-8u-vdU" firstAttribute="leading" secondItem="tYa-iE-1hM" secondAttribute="leadingMargin" id="mDN-61-9Fm"/>
                             <constraint firstItem="c9x-Kw-AyO" firstAttribute="top" secondItem="mQo-8u-vdU" secondAttribute="bottom" constant="116" id="o9E-bI-Grk"/>
@@ -182,6 +185,7 @@
                             <constraint firstItem="c9x-Kw-AyO" firstAttribute="centerX" secondItem="tYa-iE-1hM" secondAttribute="centerX" id="qkk-r7-gyb"/>
                             <constraint firstItem="6rN-ud-uBj" firstAttribute="leading" secondItem="cRc-p0-xZx" secondAttribute="trailing" constant="8" id="u11-F0-kVE"/>
                             <constraint firstItem="pol-jN-AYS" firstAttribute="leading" secondItem="tYa-iE-1hM" secondAttribute="leadingMargin" id="uy6-cL-NhO"/>
+                            <constraint firstItem="Bfa-qg-6Xg" firstAttribute="centerY" secondItem="ZYo-WG-M8B" secondAttribute="centerY" id="vL4-6F-eYB"/>
                             <constraint firstItem="cRc-p0-xZx" firstAttribute="centerY" secondItem="6rN-ud-uBj" secondAttribute="centerY" id="wCG-qB-QNi"/>
                             <constraint firstItem="gFF-j2-xq3" firstAttribute="top" secondItem="ZYo-WG-M8B" secondAttribute="bottom" constant="32" id="wVI-kT-Kml"/>
                             <constraint firstItem="pol-jN-AYS" firstAttribute="baseline" secondItem="b40-Y0-h32" secondAttribute="baseline" id="xKs-7e-VXZ"/>

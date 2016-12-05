@@ -51,6 +51,7 @@ class ChallengeCreationController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "Create Challenge"
         
         ref = FIRDatabase.database().reference()
         // TODO: explicitly calling this is not great
