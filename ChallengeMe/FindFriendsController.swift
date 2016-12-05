@@ -106,7 +106,7 @@ class FindFriendsController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.opponent = friends[indexPath.row]
         self.challengeVC?.opponent = opponent
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Navigation

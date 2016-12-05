@@ -63,7 +63,7 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         eventPic.image = UIImage(named: "running.jpg")
         
         //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddEventVC.dismissKeyboard))
         
         //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
         tap.cancelsTouchesInView = false
@@ -169,7 +169,7 @@ class AddEventVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         
         self.ref.child("Challenges/\(currChallenge.id!)/events/count").setValue(currChallenge.events.count)
         
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     /*
     // MARK: - Navigation

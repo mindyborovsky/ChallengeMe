@@ -76,7 +76,7 @@ class AcceptChallenge: UIViewController {
 
             
         //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AcceptChallenge.dismissKeyboard))
         
         //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
         tap.cancelsTouchesInView = false
@@ -118,7 +118,7 @@ class AcceptChallenge: UIViewController {
         self.ref.child("Users/\(challenge.opponentId!)/Challenges/\(challenge.id!)/status").setValue(status)
         self.ref.child("Users/\(challenge.creatorId!)/Challenges/\(challenge.id!)/status").setValue(status)
         
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func rejectButton(_ sender: Any) {
@@ -131,7 +131,7 @@ class AcceptChallenge: UIViewController {
         self.ref.child("Users/\(challenge.opponentId!)/Challenges/\(challenge.id!)/status").setValue(status)
         self.ref.child("Users/\(challenge.creatorId!)/Challenges/\(challenge.id!)/status").setValue(status)
         
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     /*
     // MARK: - Navigation

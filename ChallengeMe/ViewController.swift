@@ -105,7 +105,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 
                 
                 let name = profile.displayName
-                let email = profile.email
+                _ = profile.email
                 let photoURL = profile.photoURL
                 let uid = profile.uid
                 //TODO: Is this bad?
