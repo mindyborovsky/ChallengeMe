@@ -153,23 +153,7 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
             let eventButton = UIButton(type: .custom)
             eventButton.frame = eventButtonFrame
             // Set button image!
-            spaceRef.downloadURL { (URL, error) -> Void in
-                if (error != nil) {
-                    // Handle any errors
-                    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-                } else {
-                    // Get the download URL for 'images/stars.jpg'
-                    DispatchQueue.global().async {
-                        let data = try? Data(contentsOf: URL!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                        DispatchQueue.main.async {
-                            eventButton.setImage(UIImage(data: data!), for: .normal)
-                            // this is delayed by a cycle
-                            self.view.setNeedsDisplay()
-                            
-                        }
-                    }
-                }
-            }
+            getPhoto(spaceRef: spaceRef, eventButton: eventButton)
             //let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/challengeme-75fd5.appspot.com/o/aa102079151492611708983341402682363502091082%2F3.jpg?alt=media&token=42ac1951-91b3-4fc5-ac35-785d0f3aa525")
             
             
@@ -248,6 +232,28 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
             let vc = segue.destination as! ViewEventVC
             vc.currChallenge = currChallenge
             vc.eventTag = curTag
+        }
+    }
+    
+    
+    func getPhoto(spaceRef: FIRStorageReference, eventButton: UIButton) {
+        spaceRef.downloadURL { (URL, error) -> Void in
+            if (error != nil) {
+                // Handle any errors
+                print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                self.getPhoto(spaceRef: spaceRef, eventButton: eventButton)
+            } else {
+                // Get the download URL for 'images/stars.jpg'
+                DispatchQueue.global().async {
+                    let data = try? Data(contentsOf: URL!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                    DispatchQueue.main.async {
+                        eventButton.setImage(UIImage(data: data!), for: .normal)
+                        // this is delayed by a cycle
+                        self.view.setNeedsDisplay()
+                        
+                    }
+                }
+            }
         }
     }
     /*
