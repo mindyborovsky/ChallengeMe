@@ -103,14 +103,14 @@ class TimelineVC: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         
         
-        scrollView.backgroundColor = UIColor(red:0.50, green:0.55, blue:0.55, alpha:1.0)
+        scrollView.backgroundColor = UIColor(red:0.05, green:0.75, blue:0.91, alpha:1.0)
         view.addSubview(scrollView)
         
         let lengthOfTimeline = CGFloat(currChallenge.events.count + 1)*80
         
         let bigFrame = CGRect(x:0, y:0, width: self.view.frame.width, height: lengthOfTimeline+100)
         let tlView = UIView(frame: bigFrame)
-        tlView.backgroundColor = UIColor(red:0.50, green:0.55, blue:0.55, alpha:1.0)
+        tlView.backgroundColor = UIColor(red:0.05, green:0.75, blue:0.91, alpha:1.0)
         
         
         let path = UIBezierPath();
